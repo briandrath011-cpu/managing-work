@@ -1,0 +1,98 @@
+{
+  "name": "AnimeRPG",
+  "globIgnorePaths": ["**/*.md"],
+  "tree": {
+    "$className": "DataModel",
+
+    "ReplicatedStorage": {
+      "$className": "ReplicatedStorage",
+      "Modules": {
+        "$path": "src/ReplicatedStorage/Modules"
+      },
+      "Remotes": {
+        "$className": "Folder"
+      },
+      "Assets": {
+        "$className": "Folder",
+        "VFX": { "$className": "Folder" },
+        "Sounds": { "$className": "Folder" },
+        "Animations": { "$className": "Folder" },
+        "Weapons": { "$className": "Folder" },
+        "Rigs": { "$className": "Folder" }
+      }
+    },
+
+    "ServerScriptService": {
+      "$className": "ServerScriptService",
+      "$path": "src/ServerScriptService"
+    },
+
+    "StarterPlayer": {
+      "$className": "StarterPlayer",
+      "$properties": {
+        "CameraMaxZoomDistance": 60,
+        "CharacterJumpPower": 55,
+        "CharacterUseJumpPower": true
+      },
+      "StarterPlayerScripts": {
+        "$className": "StarterPlayerScripts",
+        "$path": "src/StarterPlayer/StarterPlayerScripts"
+      },
+      "StarterCharacterScripts": {
+        "$className": "StarterCharacterScripts",
+        "$path": "src/StarterPlayer/StarterCharacterScripts"
+      }
+    },
+
+    "StarterGui": {
+      "$className": "StarterGui",
+      "$properties": {
+        "ResetPlayerGuiOnSpawn": false
+      }
+    },
+
+    "Players": {
+      "$className": "Players",
+      "$properties": {
+        "CharacterAutoLoads": false
+      }
+    },
+
+    "Workspace": {
+      "$className": "Workspace",
+      "$properties": {
+        "StreamingEnabled": true,
+        "StreamingMinRadius": 256,
+        "StreamingTargetRadius": 1024,
+        "Gravity": 196.2
+      },
+      "Map": { "$className": "Folder" },
+      "NPCs": { "$className": "Folder" },
+      "Enemies": { "$className": "Folder" },
+      "Bosses": { "$className": "Folder" },
+      "Interactables": { "$className": "Folder" },
+      "Effects": { "$className": "Folder" },
+      "Drops": { "$className": "Folder" }
+    },
+
+    "Lighting": {
+      "$className": "Lighting",
+      "$properties": {
+        "ClockTime": 8,
+        "GlobalShadows": true,
+        "Technology": "Future"
+      }
+    },
+
+    "SoundService": {
+      "$className": "SoundService",
+      "$properties": {
+        "RespectFilteringEnabled": true
+      }
+    },
+
+    "TextChatService": {
+      "$className": "TextChatService"
+    }
+  }
+}
