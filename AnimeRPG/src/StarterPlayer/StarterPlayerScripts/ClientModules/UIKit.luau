@@ -244,8 +244,17 @@ function UIKit.Bar(parent: Instance, color: Color3, props: { [string]: any }?)
 		TextStrokeTransparency = 0.5,
 	})
 	local current = 1
+	local currentText = ""
 	local function set(ratio: number, text: string?)
 		ratio = math.clamp(ratio, 0, 1)
+		if text and text ~= currentText then
+			currentText = text
+			label.Text = text
+		end
+		-- Called every frame by the HUD: only start tweens when the value really changed.
+		if math.abs(ratio - current) < 0.002 then
+			return
+		end
 		if ratio < current then
 			fill.Size = UDim2.fromScale(ratio, 1)
 			UIKit.Tween(lag, 0.45, { Size = UDim2.fromScale(ratio, 1) })
@@ -254,9 +263,6 @@ function UIKit.Bar(parent: Instance, color: Color3, props: { [string]: any }?)
 			lag.Size = UDim2.fromScale(ratio, 1)
 		end
 		current = ratio
-		if text then
-			label.Text = text
-		end
 	end
 	return back, set, label
 end

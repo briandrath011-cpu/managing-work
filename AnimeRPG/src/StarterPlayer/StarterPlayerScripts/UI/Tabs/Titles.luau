@@ -56,21 +56,16 @@ function TitlesTab:Refresh()
 			{ Position = UDim2.fromOffset(10, 28), Size = UDim2.new(1, -120, 0, 22), TextSize = 12, Font = T.Font, TextColor3 = T.SubText }
 		)
 		if owned then
-			UIKit.Button(
-				card,
-				equipped and "Unequip" or "Equip",
-				{
-					Position = UDim2.new(1, -106, 0, 12),
-					Size = UDim2.fromOffset(96, 34),
-					BackgroundColor3 = equipped and T.Good or T.Accent,
-				},
-				function()
-					local ok, err = Net.Invoke("ProfileAction", "EquipTitle", equipped and "" or id)
-					if not ok and err then
-						ClientRegistry.Get("HUD"):Toast(err, "Error")
-					end
+			UIKit.Button(card, equipped and "Unequip" or "Equip", {
+				Position = UDim2.new(1, -106, 0, 12),
+				Size = UDim2.fromOffset(96, 34),
+				BackgroundColor3 = equipped and T.Good or T.Accent,
+			}, function()
+				local ok, err = Net.Invoke("ProfileAction", "EquipTitle", equipped and "" or id)
+				if not ok and err then
+					ClientRegistry.Get("HUD"):Toast(err, "Error")
 				end
-			)
+			end)
 		end
 	end
 end

@@ -341,17 +341,13 @@ local function buildAbilityBar()
 			TextYAlignment = Enum.TextYAlignment.Center,
 			TextWrapped = true,
 		})
-		local key = UIKit.Label(
-			slot,
-			"",
-			{
-				Position = UDim2.fromOffset(6, 3),
-				Size = UDim2.new(1, -12, 0, 16),
-				TextSize = 12,
-				Font = T.FontBlack,
-				TextColor3 = T.SubText,
-			}
-		)
+		local key = UIKit.Label(slot, "", {
+			Position = UDim2.fromOffset(6, 3),
+			Size = UDim2.new(1, -12, 0, 16),
+			TextSize = 12,
+			Font = T.FontBlack,
+			TextColor3 = T.SubText,
+		})
 		local cooldown = UIKit.New("Frame", {
 			BackgroundColor3 = Color3.new(0, 0, 0),
 			BackgroundTransparency = 0.35,
