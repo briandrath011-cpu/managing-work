@@ -50,41 +50,30 @@ local function card(parent: Instance, def, size: Vector2): Frame
 	UIKit.Corner(frame, 12)
 	UIKit.Stroke(frame, color, 3, 0)
 	UIKit.Gradient(frame, color:Lerp(Color3.new(0, 0, 0), 0.55), T.PanelDark, 90)
-	local orb = UIKit.New(
-		"Frame",
-		{
-			BackgroundColor3 = def.Color,
-			AnchorPoint = Vector2.new(0.5, 0),
-			Position = UDim2.new(0.5, 0, 0, 14),
-			Size = UDim2.fromOffset(size.X * 0.45, size.X * 0.45),
-			Parent = frame,
-		}
-	)
+	local orb = UIKit.New("Frame", {
+		BackgroundColor3 = def.Color,
+		AnchorPoint = Vector2.new(0.5, 0),
+		Position = UDim2.new(0.5, 0, 0, 14),
+		Size = UDim2.fromOffset(size.X * 0.45, size.X * 0.45),
+		Parent = frame,
+	})
 	UIKit.Corner(orb, 999)
 	UIKit.Gradient(orb, def.Color:Lerp(Color3.new(1, 1, 1), 0.4), def.SecondaryColor or def.Color, 45)
-	UIKit.Label(
-		frame,
-		def.DisplayName,
-		{
-			Position = UDim2.new(0, 6, 1, -54),
-			Size = UDim2.new(1, -12, 0, 26),
-			TextXAlignment = Enum.TextXAlignment.Center,
-			TextSize = 15,
-			Font = T.FontBlack,
-			TextColor3 = color,
-		}
-	)
-	UIKit.Label(
-		frame,
-		string.upper(def.Rarity),
-		{
-			Position = UDim2.new(0, 6, 1, -28),
-			Size = UDim2.new(1, -12, 0, 20),
-			TextXAlignment = Enum.TextXAlignment.Center,
-			TextSize = 12,
-			TextColor3 = T.SubText,
-		}
-	)
+	UIKit.Label(frame, def.DisplayName, {
+		Position = UDim2.new(0, 6, 1, -54),
+		Size = UDim2.new(1, -12, 0, 26),
+		TextXAlignment = Enum.TextXAlignment.Center,
+		TextSize = 15,
+		Font = T.FontBlack,
+		TextColor3 = color,
+	})
+	UIKit.Label(frame, string.upper(def.Rarity), {
+		Position = UDim2.new(0, 6, 1, -28),
+		Size = UDim2.new(1, -12, 0, 20),
+		TextXAlignment = Enum.TextXAlignment.Center,
+		TextSize = 12,
+		TextColor3 = T.SubText,
+	})
 	return frame
 end
 
@@ -160,17 +149,14 @@ local function animateSingle(result)
 	end
 	local stageWidth = stage.AbsoluteSize.X > 0 and stage.AbsoluteSize.X or 900
 	local finalX = -((count - 4) * (cardWidth + gap)) + stageWidth / 2 - cardWidth / 2
-	local pointer = UIKit.New(
-		"Frame",
-		{
-			BackgroundColor3 = T.Gold,
-			AnchorPoint = Vector2.new(0.5, 0),
-			Position = UDim2.new(0.5, 0, 0, 4),
-			Size = UDim2.new(0, 4, 1, -8),
-			ZIndex = 10,
-			Parent = stage,
-		}
-	)
+	local pointer = UIKit.New("Frame", {
+		BackgroundColor3 = T.Gold,
+		AnchorPoint = Vector2.new(0.5, 0),
+		Position = UDim2.new(0.5, 0, 0, 4),
+		Size = UDim2.new(0, 4, 1, -8),
+		ZIndex = 10,
+		Parent = stage,
+	})
 	local _ = pointer
 	local duration = 3.2
 	local start = os.clock()
@@ -314,16 +300,13 @@ function SpinMenu:Init()
 		"",
 		{ Position = UDim2.fromOffset(0, 24), Size = UDim2.new(1, 0, 0, 20), TextSize = 12, TextColor3 = T.SubText, Font = T.Font }
 	)
-	stage = UIKit.New(
-		"Frame",
-		{
-			BackgroundColor3 = T.PanelDark,
-			Position = UDim2.fromOffset(0, 50),
-			Size = UDim2.new(1, 0, 0, 260),
-			ClipsDescendants = true,
-			Parent = content,
-		}
-	)
+	stage = UIKit.New("Frame", {
+		BackgroundColor3 = T.PanelDark,
+		Position = UDim2.fromOffset(0, 50),
+		Size = UDim2.new(1, 0, 0, 260),
+		ClipsDescendants = true,
+		Parent = content,
+	})
 	UIKit.Corner(stage, 12)
 	UIKit.Label(
 		stage,
@@ -357,21 +340,16 @@ function SpinMenu:Init()
 			task.spawn(SpinMenu.Spin, SpinMenu, 10, true)
 		end
 	)
-	skipButton = UIKit.Button(
-		content,
-		"SKIP ▶▶",
-		{
-			AnchorPoint = Vector2.new(1, 0),
-			Position = UDim2.new(1, -8, 0, 58),
-			Size = UDim2.fromOffset(110, 34),
-			BackgroundColor3 = T.Bad,
-			Visible = false,
-			ZIndex = 20,
-		},
-		function()
-			skipRequested = true
-		end
-	)
+	skipButton = UIKit.Button(content, "SKIP ▶▶", {
+		AnchorPoint = Vector2.new(1, 0),
+		Position = UDim2.new(1, -8, 0, 58),
+		Size = UDim2.fromOffset(110, 34),
+		BackgroundColor3 = T.Bad,
+		Visible = false,
+		ZIndex = 20,
+	}, function()
+		skipRequested = true
+	end)
 	-- Chances
 	local chances = UIKit.New(
 		"Frame",
@@ -384,43 +362,31 @@ function SpinMenu:Init()
 		if stroke then
 			stroke.Color = RarityConfig.GetColor(rarity)
 		end
-		UIKit.Label(
-			chip,
-			rarity,
-			{
-				Position = UDim2.fromOffset(0, 6),
-				Size = UDim2.new(1, 0, 0, 20),
-				TextXAlignment = Enum.TextXAlignment.Center,
-				TextColor3 = RarityConfig.GetColor(rarity),
-			}
-		)
-		UIKit.Label(
-			chip,
-			RarityConfig.SpinChances[rarity] .. "%",
-			{
-				Position = UDim2.fromOffset(0, 26),
-				Size = UDim2.new(1, 0, 0, 22),
-				TextXAlignment = Enum.TextXAlignment.Center,
-				TextSize = 18,
-				Font = T.FontBlack,
-			}
-		)
+		UIKit.Label(chip, rarity, {
+			Position = UDim2.fromOffset(0, 6),
+			Size = UDim2.new(1, 0, 0, 20),
+			TextXAlignment = Enum.TextXAlignment.Center,
+			TextColor3 = RarityConfig.GetColor(rarity),
+		})
+		UIKit.Label(chip, RarityConfig.SpinChances[rarity] .. "%", {
+			Position = UDim2.fromOffset(0, 26),
+			Size = UDim2.new(1, 0, 0, 22),
+			TextXAlignment = Enum.TextXAlignment.Center,
+			TextSize = 18,
+			Font = T.FontBlack,
+		})
 		local names = {}
 		for _, def in ipairs(PowerRegistry.ByRarity(rarity)) do
 			table.insert(names, def.DisplayName)
 		end
-		UIKit.Label(
-			chip,
-			table.concat(names, ", "),
-			{
-				Position = UDim2.fromOffset(4, 48),
-				Size = UDim2.new(1, -8, 0, 22),
-				TextXAlignment = Enum.TextXAlignment.Center,
-				TextSize = 10,
-				Font = T.Font,
-				TextColor3 = T.SubText,
-			}
-		)
+		UIKit.Label(chip, table.concat(names, ", "), {
+			Position = UDim2.fromOffset(4, 48),
+			Size = UDim2.new(1, -8, 0, 22),
+			TextXAlignment = Enum.TextXAlignment.Center,
+			TextSize = 10,
+			Font = T.Font,
+			TextColor3 = T.SubText,
+		})
 	end
 	ClientRegistry.Get("InputController"):OnAction("Spin", function(began)
 		if began then

@@ -125,46 +125,33 @@ function DialogUI:ShowShop()
 				def.DisplayName,
 				{ Position = UDim2.fromOffset(12, 4), Size = UDim2.new(1, -330, 0, 22), TextColor3 = UIKit.RarityColor(def.Rarity) }
 			)
-			UIKit.Label(
-				row,
-				def.Description or "",
-				{
-					Position = UDim2.fromOffset(12, 26),
-					Size = UDim2.new(1, -330, 0, 20),
-					TextSize = 12,
-					Font = T.Font,
-					TextColor3 = T.SubText,
-				}
-			)
-			UIKit.Label(
-				row,
-				string.format("%s %s", Format.Commas(entry.Price), entry.Currency),
-				{
-					Position = UDim2.new(1, -318, 0, 14),
-					Size = UDim2.fromOffset(120, 24),
-					TextColor3 = entry.Currency == "Gems" and T.Gem or T.Gold,
-					TextXAlignment = Enum.TextXAlignment.Right,
-				}
-			)
+			UIKit.Label(row, def.Description or "", {
+				Position = UDim2.fromOffset(12, 26),
+				Size = UDim2.new(1, -330, 0, 20),
+				TextSize = 12,
+				Font = T.Font,
+				TextColor3 = T.SubText,
+			})
+			UIKit.Label(row, string.format("%s %s", Format.Commas(entry.Price), entry.Currency), {
+				Position = UDim2.new(1, -318, 0, 14),
+				Size = UDim2.fromOffset(120, 24),
+				TextColor3 = entry.Currency == "Gems" and T.Gem or T.Gold,
+				TextXAlignment = Enum.TextXAlignment.Right,
+			})
 			for i, amount in ipairs(def.Stackable and { 1, 5 } or { 1 }) do
-				UIKit.Button(
-					row,
-					"Buy x" .. amount,
-					{
-						Position = UDim2.new(1, -190 + (i - 1) * 90, 0, 9),
-						Size = UDim2.fromOffset(84, 34),
-						TextSize = 13,
-						BackgroundColor3 = T.Accent,
-					},
-					function()
-						local bought, err = Net.Invoke("ShopAction", "Buy", currentNpc, index, amount)
-						if bought then
-							toast("Bought " .. def.DisplayName .. " x" .. amount, "Reward")
-						elseif err then
-							toast(err)
-						end
+				UIKit.Button(row, "Buy x" .. amount, {
+					Position = UDim2.new(1, -190 + (i - 1) * 90, 0, 9),
+					Size = UDim2.fromOffset(84, 34),
+					TextSize = 13,
+					BackgroundColor3 = T.Accent,
+				}, function()
+					local bought, err = Net.Invoke("ShopAction", "Buy", currentNpc, index, amount)
+					if bought then
+						toast("Bought " .. def.DisplayName .. " x" .. amount, "Reward")
+					elseif err then
+						toast(err)
 					end
-				)
+				end)
 			end
 		end
 	end
@@ -180,15 +167,11 @@ function DialogUI:ShowCraft(station: string)
 		if recipe.Station == station or recipe.Station == "Any" then
 			local result = ItemUtil.Get(recipe.Result)
 			local row = UIKit.Panel(list, { Size = UDim2.new(1, -8, 0, 74), LayoutOrder = index + 1 })
-			UIKit.Label(
-				row,
-				string.format("%s x%d", result and result.DisplayName or recipe.Result, recipe.Amount),
-				{
-					Position = UDim2.fromOffset(12, 4),
-					Size = UDim2.new(1, -150, 0, 22),
-					TextColor3 = UIKit.RarityColor(result and result.Rarity),
-				}
-			)
+			UIKit.Label(row, string.format("%s x%d", result and result.DisplayName or recipe.Result, recipe.Amount), {
+				Position = UDim2.fromOffset(12, 4),
+				Size = UDim2.new(1, -150, 0, 22),
+				TextColor3 = UIKit.RarityColor(result and result.Rarity),
+			})
 			local parts = {}
 			local canCraft = data and data.Gold >= recipe.Gold
 			for itemId, amount in pairs(recipe.Materials) do
@@ -200,34 +183,25 @@ function DialogUI:ShowCraft(station: string)
 				end
 			end
 			table.insert(parts, Format.Commas(recipe.Gold) .. " Gold")
-			UIKit.Label(
-				row,
-				table.concat(parts, "  •  "),
-				{
-					Position = UDim2.fromOffset(12, 28),
-					Size = UDim2.new(1, -150, 0, 40),
-					TextSize = 12,
-					Font = T.Font,
-					TextColor3 = canCraft and T.Good or T.SubText,
-				}
-			)
-			UIKit.Button(
-				row,
-				"Craft",
-				{
-					Position = UDim2.new(1, -130, 0, 18),
-					Size = UDim2.fromOffset(118, 38),
-					BackgroundColor3 = canCraft and T.Good or T.PanelLight,
-				},
-				function()
-					local ok, err = Net.Invoke("CraftAction", "Craft", recipe.Id, currentNpc)
-					if ok then
-						DialogUI:ShowCraft(station)
-					elseif err then
-						toast(err)
-					end
+			UIKit.Label(row, table.concat(parts, "  •  "), {
+				Position = UDim2.fromOffset(12, 28),
+				Size = UDim2.new(1, -150, 0, 40),
+				TextSize = 12,
+				Font = T.Font,
+				TextColor3 = canCraft and T.Good or T.SubText,
+			})
+			UIKit.Button(row, "Craft", {
+				Position = UDim2.new(1, -130, 0, 18),
+				Size = UDim2.fromOffset(118, 38),
+				BackgroundColor3 = canCraft and T.Good or T.PanelLight,
+			}, function()
+				local ok, err = Net.Invoke("CraftAction", "Craft", recipe.Id, currentNpc)
+				if ok then
+					DialogUI:ShowCraft(station)
+				elseif err then
+					toast(err)
 				end
-			)
+			end)
 		end
 	end
 end
@@ -259,28 +233,23 @@ function DialogUI:ShowStyles()
 			string.format("%s  (Lv. %d, %s Gold)", style.Description, style.LevelRequired, Format.Commas(style.Cost)),
 			{ Position = UDim2.fromOffset(12, 28), Size = UDim2.new(1, -180, 0, 28), TextSize = 12, Font = T.Font, TextColor3 = T.SubText }
 		)
-		UIKit.Button(
-			row,
-			learned and "Equip" or "Learn",
-			{
-				Position = UDim2.new(1, -160, 0, 12),
-				Size = UDim2.fromOffset(148, 36),
-				BackgroundColor3 = learned and T.PanelLight or T.Accent,
-			},
-			function()
-				local ok, err
-				if learned then
-					ok, err = Net.Invoke("ShopAction", "EquipStyle", id)
-				else
-					ok, err = Net.Invoke("ShopAction", "BuyStyle", currentNpc, id)
-				end
-				if ok then
-					DialogUI:ShowStyles()
-				elseif err then
-					toast(err)
-				end
+		UIKit.Button(row, learned and "Equip" or "Learn", {
+			Position = UDim2.new(1, -160, 0, 12),
+			Size = UDim2.fromOffset(148, 36),
+			BackgroundColor3 = learned and T.PanelLight or T.Accent,
+		}, function()
+			local ok, err
+			if learned then
+				ok, err = Net.Invoke("ShopAction", "EquipStyle", id)
+			else
+				ok, err = Net.Invoke("ShopAction", "BuyStyle", currentNpc, id)
 			end
-		)
+			if ok then
+				DialogUI:ShowStyles()
+			elseif err then
+				toast(err)
+			end
+		end)
 	end
 end
 

@@ -44,17 +44,13 @@ function StatsTab.new(frame: Frame)
 			GameConfig.StatDescriptions[stat],
 			{ Position = UDim2.fromOffset(12, 32), Size = UDim2.new(1, -250, 0, 32), TextSize = 12, Font = T.Font, TextColor3 = T.SubText }
 		)
-		local value = UIKit.Label(
-			row,
-			"0",
-			{
-				Position = UDim2.new(1, -236, 0, 6),
-				Size = UDim2.fromOffset(60, 24),
-				TextSize = 20,
-				Font = T.FontBlack,
-				TextXAlignment = Enum.TextXAlignment.Right,
-			}
-		)
+		local value = UIKit.Label(row, "0", {
+			Position = UDim2.new(1, -236, 0, 6),
+			Size = UDim2.fromOffset(60, 24),
+			TextSize = 20,
+			Font = T.FontBlack,
+			TextXAlignment = Enum.TextXAlignment.Right,
+		})
 		for i, amount in ipairs({ 1, 5, 10 }) do
 			UIKit.Button(
 				row,

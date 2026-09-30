@@ -40,54 +40,40 @@ end
 
 local function intro(payload)
 	local model: Model? = payload.Model
-	local card = UIKit.New(
-		"Frame",
-		{
-			BackgroundTransparency = 1,
-			AnchorPoint = Vector2.new(0.5, 0.5),
-			Position = UDim2.fromScale(0.5, 0.62),
-			Size = UDim2.fromOffset(900, 150),
-			Parent = screen,
-		}
-	)
-	local strip = UIKit.New(
-		"Frame",
-		{
-			BackgroundColor3 = Color3.new(0, 0, 0),
-			BackgroundTransparency = 0.25,
-			Size = UDim2.new(0, 0, 1, 0),
-			AnchorPoint = Vector2.new(0.5, 0),
-			Position = UDim2.fromScale(0.5, 0),
-			BorderSizePixel = 0,
-			Parent = card,
-		}
-	)
+	local card = UIKit.New("Frame", {
+		BackgroundTransparency = 1,
+		AnchorPoint = Vector2.new(0.5, 0.5),
+		Position = UDim2.fromScale(0.5, 0.62),
+		Size = UDim2.fromOffset(900, 150),
+		Parent = screen,
+	})
+	local strip = UIKit.New("Frame", {
+		BackgroundColor3 = Color3.new(0, 0, 0),
+		BackgroundTransparency = 0.25,
+		Size = UDim2.new(0, 0, 1, 0),
+		AnchorPoint = Vector2.new(0.5, 0),
+		Position = UDim2.fromScale(0.5, 0),
+		BorderSizePixel = 0,
+		Parent = card,
+	})
 	UIKit.Gradient(strip, payload.Color or T.Bad, Color3.new(0, 0, 0), 0)
-	local title = UIKit.Label(
-		card,
-		string.upper(payload.Name),
-		{
-			Position = UDim2.fromOffset(0, 24),
-			Size = UDim2.new(1, 0, 0, 70),
-			TextSize = 56,
-			Font = T.FontBlack,
-			TextXAlignment = Enum.TextXAlignment.Center,
-			TextStrokeTransparency = 0,
-			TextTransparency = 1,
-		}
-	)
-	local sub = UIKit.Label(
-		card,
-		"LEVEL " .. tostring(payload.Level) .. "  •  BOSS",
-		{
-			Position = UDim2.fromOffset(0, 96),
-			Size = UDim2.new(1, 0, 0, 30),
-			TextSize = 22,
-			TextXAlignment = Enum.TextXAlignment.Center,
-			TextColor3 = payload.Color or T.Bad,
-			TextTransparency = 1,
-		}
-	)
+	local title = UIKit.Label(card, string.upper(payload.Name), {
+		Position = UDim2.fromOffset(0, 24),
+		Size = UDim2.new(1, 0, 0, 70),
+		TextSize = 56,
+		Font = T.FontBlack,
+		TextXAlignment = Enum.TextXAlignment.Center,
+		TextStrokeTransparency = 0,
+		TextTransparency = 1,
+	})
+	local sub = UIKit.Label(card, "LEVEL " .. tostring(payload.Level) .. "  •  BOSS", {
+		Position = UDim2.fromOffset(0, 96),
+		Size = UDim2.new(1, 0, 0, 30),
+		TextSize = 22,
+		TextXAlignment = Enum.TextXAlignment.Center,
+		TextColor3 = payload.Color or T.Bad,
+		TextTransparency = 1,
+	})
 	UIKit.Tween(strip, 0.35, { Size = UDim2.new(1, 0, 1, 0) })
 	task.delay(0.2, function()
 		UIKit.Tween(title, 0.3, { TextTransparency = 0 })
@@ -134,17 +120,13 @@ function BossUI:Init()
 		"",
 		{ Position = UDim2.fromOffset(14, 4), Size = UDim2.new(1, -140, 0, 24), TextSize = 18, Font = T.FontBlack }
 	)
-	phaseLabel = UIKit.Label(
-		barFrame,
-		"",
-		{
-			Position = UDim2.new(1, -130, 0, 4),
-			Size = UDim2.fromOffset(118, 24),
-			TextSize = 14,
-			TextXAlignment = Enum.TextXAlignment.Right,
-			TextColor3 = T.SubText,
-		}
-	)
+	phaseLabel = UIKit.Label(barFrame, "", {
+		Position = UDim2.new(1, -130, 0, 4),
+		Size = UDim2.fromOffset(118, 24),
+		TextSize = 14,
+		TextXAlignment = Enum.TextXAlignment.Right,
+		TextColor3 = T.SubText,
+	})
 	local _, setter = UIKit.Bar(barFrame, T.Health, { Position = UDim2.fromOffset(14, 32), Size = UDim2.new(1, -28, 0, 22) })
 	setBar = setter
 	local remote = Net.Event("BossUI")

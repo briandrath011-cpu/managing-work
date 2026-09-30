@@ -86,17 +86,13 @@ function HUD:Toast(text: string, kind: string?, color: Color3?)
 	end
 	local toast = UIKit.Panel(toastContainer, { Size = UDim2.new(1, 0, 0, 34), BackgroundTransparency = 0.15 })
 	local accent = color or TOAST_COLORS[kind or ""] or T.Text
-	UIKit.Label(
-		toast,
-		text,
-		{
-			Size = UDim2.new(1, -20, 1, 0),
-			Position = UDim2.fromOffset(10, 0),
-			TextColor3 = accent,
-			TextSize = 15,
-			TextXAlignment = Enum.TextXAlignment.Center,
-		}
-	)
+	UIKit.Label(toast, text, {
+		Size = UDim2.new(1, -20, 1, 0),
+		Position = UDim2.fromOffset(10, 0),
+		TextColor3 = accent,
+		TextSize = 15,
+		TextXAlignment = Enum.TextXAlignment.Center,
+	})
 	local stroke = toast:FindFirstChildOfClass("UIStroke")
 	if stroke then
 		stroke.Color = accent
@@ -130,52 +126,38 @@ end
 
 -- Big center banner (quest complete, new region...)
 function HUD:Banner(title: string, subtitle: string?, color: Color3?)
-	local frame = UIKit.New(
-		"Frame",
-		{
-			BackgroundTransparency = 1,
-			AnchorPoint = Vector2.new(0.5, 0.5),
-			Position = UDim2.fromScale(0.5, 0.28),
-			Size = UDim2.fromOffset(700, 110),
-			Parent = screen,
-		}
-	)
-	local titleLabel = UIKit.Label(
-		frame,
-		title,
-		{
-			Size = UDim2.new(1, 0, 0, 56),
-			Font = T.FontBlack,
-			TextSize = 46,
-			TextXAlignment = Enum.TextXAlignment.Center,
-			TextColor3 = color or T.Text,
-			TextStrokeTransparency = 0.3,
-			TextTransparency = 1,
-		}
-	)
-	local sub = UIKit.Label(
-		frame,
-		subtitle or "",
-		{
-			Position = UDim2.fromOffset(0, 58),
-			Size = UDim2.new(1, 0, 0, 34),
-			TextSize = 26,
-			TextXAlignment = Enum.TextXAlignment.Center,
-			TextStrokeTransparency = 0.4,
-			TextTransparency = 1,
-		}
-	)
-	local line = UIKit.New(
-		"Frame",
-		{
-			AnchorPoint = Vector2.new(0.5, 0),
-			Position = UDim2.new(0.5, 0, 0, 56),
-			Size = UDim2.fromOffset(0, 2),
-			BackgroundColor3 = color or T.Accent,
-			BorderSizePixel = 0,
-			Parent = frame,
-		}
-	)
+	local frame = UIKit.New("Frame", {
+		BackgroundTransparency = 1,
+		AnchorPoint = Vector2.new(0.5, 0.5),
+		Position = UDim2.fromScale(0.5, 0.28),
+		Size = UDim2.fromOffset(700, 110),
+		Parent = screen,
+	})
+	local titleLabel = UIKit.Label(frame, title, {
+		Size = UDim2.new(1, 0, 0, 56),
+		Font = T.FontBlack,
+		TextSize = 46,
+		TextXAlignment = Enum.TextXAlignment.Center,
+		TextColor3 = color or T.Text,
+		TextStrokeTransparency = 0.3,
+		TextTransparency = 1,
+	})
+	local sub = UIKit.Label(frame, subtitle or "", {
+		Position = UDim2.fromOffset(0, 58),
+		Size = UDim2.new(1, 0, 0, 34),
+		TextSize = 26,
+		TextXAlignment = Enum.TextXAlignment.Center,
+		TextStrokeTransparency = 0.4,
+		TextTransparency = 1,
+	})
+	local line = UIKit.New("Frame", {
+		AnchorPoint = Vector2.new(0.5, 0),
+		Position = UDim2.new(0.5, 0, 0, 56),
+		Size = UDim2.fromOffset(0, 2),
+		BackgroundColor3 = color or T.Accent,
+		BorderSizePixel = 0,
+		Parent = frame,
+	})
 	UIKit.Tween(titleLabel, 0.3, { TextTransparency = 0 })
 	UIKit.Tween(sub, 0.5, { TextTransparency = 0 })
 	UIKit.Tween(line, 0.5, { Size = UDim2.fromOffset(500, 2) })
@@ -190,27 +172,20 @@ function HUD:Banner(title: string, subtitle: string?, color: Color3?)
 end
 
 function HUD:ServerMessage(text: string, color: Color3?)
-	local bar = UIKit.Panel(
-		screen,
-		{
-			AnchorPoint = Vector2.new(0.5, 0),
-			Position = UDim2.new(0.5, 0, 0, -60),
-			Size = UDim2.fromOffset(760, 46),
-			BackgroundColor3 = Color3.fromRGB(30, 10, 20),
-		}
-	)
+	local bar = UIKit.Panel(screen, {
+		AnchorPoint = Vector2.new(0.5, 0),
+		Position = UDim2.new(0.5, 0, 0, -60),
+		Size = UDim2.fromOffset(760, 46),
+		BackgroundColor3 = Color3.fromRGB(30, 10, 20),
+	})
 	UIKit.Gradient(bar, Color3.fromRGB(60, 10, 30), Color3.fromRGB(20, 10, 40), 0)
-	UIKit.Label(
-		bar,
-		text,
-		{
-			Size = UDim2.fromScale(1, 1),
-			TextXAlignment = Enum.TextXAlignment.Center,
-			TextSize = 20,
-			Font = T.FontBlack,
-			TextColor3 = color or Color3.fromRGB(255, 210, 120),
-		}
-	)
+	UIKit.Label(bar, text, {
+		Size = UDim2.fromScale(1, 1),
+		TextXAlignment = Enum.TextXAlignment.Center,
+		TextSize = 20,
+		Font = T.FontBlack,
+		TextColor3 = color or Color3.fromRGB(255, 210, 120),
+	})
 	UIKit.Tween(bar, 0.4, { Position = UDim2.new(0.5, 0, 0, 60) }, Enum.EasingStyle.Back)
 	task.delay(5, function()
 		UIKit.Tween(bar, 0.4, { Position = UDim2.new(0.5, 0, 0, -60) })
@@ -235,17 +210,13 @@ local function buildPlayerPanel()
 		"LV",
 		{ Size = UDim2.new(1, 0, 0, 16), Position = UDim2.fromOffset(0, 6), TextSize = 12, TextXAlignment = Enum.TextXAlignment.Center }
 	)
-	refs.Level = UIKit.Label(
-		badge,
-		"1",
-		{
-			Size = UDim2.new(1, 0, 0, 28),
-			Position = UDim2.fromOffset(0, 20),
-			TextSize = 24,
-			Font = T.FontBlack,
-			TextXAlignment = Enum.TextXAlignment.Center,
-		}
-	)
+	refs.Level = UIKit.Label(badge, "1", {
+		Size = UDim2.new(1, 0, 0, 28),
+		Position = UDim2.fromOffset(0, 20),
+		TextSize = 24,
+		Font = T.FontBlack,
+		TextXAlignment = Enum.TextXAlignment.Center,
+	})
 	refs.Name = UIKit.Label(
 		panel,
 		player.DisplayName,
@@ -282,16 +253,13 @@ local function buildCurrencies()
 end
 
 local function buildQuestTracker()
-	local panel = UIKit.Panel(
-		screen,
-		{
-			Name = "QuestTracker",
-			AnchorPoint = Vector2.new(1, 0),
-			Position = UDim2.new(1, -16, 0, 64),
-			Size = UDim2.fromOffset(300, 200),
-			BackgroundTransparency = 0.3,
-		}
-	)
+	local panel = UIKit.Panel(screen, {
+		Name = "QuestTracker",
+		AnchorPoint = Vector2.new(1, 0),
+		Position = UDim2.new(1, -16, 0, 64),
+		Size = UDim2.fromOffset(300, 200),
+		BackgroundTransparency = 0.3,
+	})
 	UIKit.Label(
 		panel,
 		"QUESTS",
@@ -307,134 +275,107 @@ local function buildQuestTracker()
 end
 
 local function buildEventIndicator()
-	local label = UIKit.Label(
-		screen,
-		"",
-		{
-			AnchorPoint = Vector2.new(0.5, 0),
-			Position = UDim2.new(0.5, 0, 0, 12),
-			Size = UDim2.fromOffset(420, 26),
-			TextSize = 18,
-			Font = T.FontBlack,
-			TextXAlignment = Enum.TextXAlignment.Center,
-			TextColor3 = Color3.fromRGB(255, 180, 90),
-			TextStrokeTransparency = 0.3,
-		}
-	)
+	local label = UIKit.Label(screen, "", {
+		AnchorPoint = Vector2.new(0.5, 0),
+		Position = UDim2.new(0.5, 0, 0, 12),
+		Size = UDim2.fromOffset(420, 26),
+		TextSize = 18,
+		Font = T.FontBlack,
+		TextXAlignment = Enum.TextXAlignment.Center,
+		TextColor3 = Color3.fromRGB(255, 180, 90),
+		TextStrokeTransparency = 0.3,
+	})
 	refs.EventLabel = label
-	refs.ClockLabel = UIKit.Label(
-		screen,
-		"",
-		{
-			AnchorPoint = Vector2.new(0.5, 0),
-			Position = UDim2.new(0.5, 0, 0, 38),
-			Size = UDim2.fromOffset(300, 18),
-			TextSize = 13,
-			TextXAlignment = Enum.TextXAlignment.Center,
-			TextColor3 = T.SubText,
-			TextStrokeTransparency = 0.5,
-		}
-	)
+	refs.ClockLabel = UIKit.Label(screen, "", {
+		AnchorPoint = Vector2.new(0.5, 0),
+		Position = UDim2.new(0.5, 0, 0, 38),
+		Size = UDim2.fromOffset(300, 18),
+		TextSize = 13,
+		TextXAlignment = Enum.TextXAlignment.Center,
+		TextColor3 = T.SubText,
+		TextStrokeTransparency = 0.5,
+	})
 end
 
 local function buildAbilityBar()
-	local bar = UIKit.New(
-		"Frame",
-		{
-			Name = "AbilityBar",
-			BackgroundTransparency = 1,
-			AnchorPoint = Vector2.new(0.5, 1),
-			Position = UDim2.new(0.5, 0, 1, -16),
-			Size = UDim2.fromOffset(7 * 78 + 30, 110),
-			Parent = screen,
-		}
-	)
-	refs.PowerName = UIKit.Label(
-		bar,
-		"",
-		{
-			Position = UDim2.fromOffset(0, 0),
-			Size = UDim2.fromOffset(4 * 78, 20),
-			TextSize = 14,
-			Font = T.FontBlack,
-			TextXAlignment = Enum.TextXAlignment.Center,
-		}
-	)
-	refs.WeaponName = UIKit.Label(
-		bar,
-		"",
-		{
-			Position = UDim2.fromOffset(4 * 78 + 30, 0),
-			Size = UDim2.fromOffset(3 * 78, 20),
-			TextSize = 14,
-			Font = T.FontBlack,
-			TextXAlignment = Enum.TextXAlignment.Center,
-		}
-	)
+	local bar = UIKit.New("Frame", {
+		Name = "AbilityBar",
+		BackgroundTransparency = 1,
+		AnchorPoint = Vector2.new(0.5, 1),
+		Position = UDim2.new(0.5, 0, 1, -16),
+		Size = UDim2.fromOffset(7 * 78 + 30, 110),
+		Parent = screen,
+	})
+	refs.PowerName = UIKit.Label(bar, "", {
+		Position = UDim2.fromOffset(0, 0),
+		Size = UDim2.fromOffset(4 * 78, 20),
+		TextSize = 14,
+		Font = T.FontBlack,
+		TextXAlignment = Enum.TextXAlignment.Center,
+	})
+	refs.WeaponName = UIKit.Label(bar, "", {
+		Position = UDim2.fromOffset(4 * 78 + 30, 0),
+		Size = UDim2.fromOffset(3 * 78, 20),
+		TextSize = 14,
+		Font = T.FontBlack,
+		TextXAlignment = Enum.TextXAlignment.Center,
+	})
 	for index, info in ipairs(SLOT_ACTIONS) do
 		local x = (index - 1) * 78 + (info.Source == "Weapon" and 30 or 0)
-		local slot = UIKit.New(
-			"TextButton",
-			{
-				Text = "",
-				AutoButtonColor = false,
-				BackgroundColor3 = T.Panel,
-				Position = UDim2.fromOffset(x, 24),
-				Size = UDim2.fromOffset(70, 70),
-				Parent = bar,
-				Selectable = false,
-			}
-		)
+		local slot = UIKit.New("TextButton", {
+			Text = "",
+			AutoButtonColor = false,
+			BackgroundColor3 = T.Panel,
+			Position = UDim2.fromOffset(x, 24),
+			Size = UDim2.fromOffset(70, 70),
+			Parent = bar,
+			Selectable = false,
+		})
 		UIKit.Corner(slot, 12)
 		local stroke = UIKit.Stroke(slot, info.Slot == 4 and info.Source == "Power" and T.Gold or T.Accent, 1.5, 0.3)
-		local name = UIKit.Label(
-			slot,
-			"",
-			{
-				Position = UDim2.fromOffset(4, 22),
-				Size = UDim2.new(1, -8, 0, 30),
-				TextSize = 11,
-				TextXAlignment = Enum.TextXAlignment.Center,
-				TextYAlignment = Enum.TextYAlignment.Center,
-				TextWrapped = true,
-			}
-		)
+		local name = UIKit.Label(slot, "", {
+			Position = UDim2.fromOffset(4, 22),
+			Size = UDim2.new(1, -8, 0, 30),
+			TextSize = 11,
+			TextXAlignment = Enum.TextXAlignment.Center,
+			TextYAlignment = Enum.TextYAlignment.Center,
+			TextWrapped = true,
+		})
 		local key = UIKit.Label(
 			slot,
 			"",
-			{ Position = UDim2.fromOffset(6, 3), Size = UDim2.new(1, -12, 0, 16), TextSize = 12, Font = T.FontBlack, TextColor3 = T.SubText }
-		)
-		local cooldown = UIKit.New(
-			"Frame",
 			{
-				BackgroundColor3 = Color3.new(0, 0, 0),
-				BackgroundTransparency = 0.35,
-				AnchorPoint = Vector2.new(0, 1),
-				Position = UDim2.fromScale(0, 1),
-				Size = UDim2.fromScale(1, 0),
-				BorderSizePixel = 0,
-				ZIndex = 3,
-				Parent = slot,
+				Position = UDim2.fromOffset(6, 3),
+				Size = UDim2.new(1, -12, 0, 16),
+				TextSize = 12,
+				Font = T.FontBlack,
+				TextColor3 = T.SubText,
 			}
 		)
+		local cooldown = UIKit.New("Frame", {
+			BackgroundColor3 = Color3.new(0, 0, 0),
+			BackgroundTransparency = 0.35,
+			AnchorPoint = Vector2.new(0, 1),
+			Position = UDim2.fromScale(0, 1),
+			Size = UDim2.fromScale(1, 0),
+			BorderSizePixel = 0,
+			ZIndex = 3,
+			Parent = slot,
+		})
 		UIKit.Corner(cooldown, 12)
 		local cdText = UIKit.Label(
 			slot,
 			"",
 			{ Size = UDim2.fromScale(1, 1), TextSize = 20, Font = T.FontBlack, TextXAlignment = Enum.TextXAlignment.Center, ZIndex = 4 }
 		)
-		local lock = UIKit.Label(
-			slot,
-			"",
-			{
-				Position = UDim2.new(0, 0, 1, -18),
-				Size = UDim2.new(1, 0, 0, 16),
-				TextSize = 10,
-				TextColor3 = T.Bad,
-				TextXAlignment = Enum.TextXAlignment.Center,
-				ZIndex = 4,
-			}
-		)
+		local lock = UIKit.Label(slot, "", {
+			Position = UDim2.new(0, 0, 1, -18),
+			Size = UDim2.new(1, 0, 0, 16),
+			TextSize = 10,
+			TextColor3 = T.Bad,
+			TextXAlignment = Enum.TextXAlignment.Center,
+			ZIndex = 4,
+		})
 		slot.Activated:Connect(function()
 			ClientRegistry.Get("AbilityController"):Use(info.Source, info.Slot)
 		end)
@@ -444,35 +385,29 @@ local function buildAbilityBar()
 end
 
 local function buildMobileControls()
-	mobileFrame = UIKit.New(
-		"Frame",
-		{
-			Name = "MobileControls",
-			BackgroundTransparency = 1,
-			AnchorPoint = Vector2.new(1, 1),
-			Position = UDim2.new(1, -20, 1, -150),
-			Size = UDim2.fromOffset(300, 260),
-			Parent = screen,
-			Visible = false,
-		}
-	)
+	mobileFrame = UIKit.New("Frame", {
+		Name = "MobileControls",
+		BackgroundTransparency = 1,
+		AnchorPoint = Vector2.new(1, 1),
+		Position = UDim2.new(1, -20, 1, -150),
+		Size = UDim2.fromOffset(300, 260),
+		Parent = screen,
+		Visible = false,
+	})
 	local input = ClientRegistry.Get("InputController")
 	local function touchButton(action: string, text: string, position: UDim2, size: number, color: Color3?, toggle: boolean?)
-		local button = UIKit.New(
-			"TextButton",
-			{
-				Text = text,
-				Font = T.FontBlack,
-				TextSize = size > 80 and 20 or 14,
-				TextColor3 = T.Text,
-				AutoButtonColor = false,
-				BackgroundColor3 = color or T.Panel,
-				BackgroundTransparency = 0.25,
-				Position = position,
-				Size = UDim2.fromOffset(size, size),
-				Parent = mobileFrame,
-			}
-		)
+		local button = UIKit.New("TextButton", {
+			Text = text,
+			Font = T.FontBlack,
+			TextSize = size > 80 and 20 or 14,
+			TextColor3 = T.Text,
+			AutoButtonColor = false,
+			BackgroundColor3 = color or T.Panel,
+			BackgroundTransparency = 0.25,
+			Position = position,
+			Size = UDim2.fromOffset(size, size),
+			Parent = mobileFrame,
+		})
 		UIKit.Corner(button, size / 2)
 		UIKit.Stroke(button, T.Accent, 2, 0.2)
 		button.InputBegan:Connect(function(inputObject)
@@ -521,17 +456,14 @@ local function buildMenuButtons()
 end
 
 local function buildToasts()
-	toastContainer = UIKit.New(
-		"Frame",
-		{
-			Name = "Toasts",
-			BackgroundTransparency = 1,
-			AnchorPoint = Vector2.new(0.5, 1),
-			Position = UDim2.new(0.5, 0, 1, -140),
-			Size = UDim2.fromOffset(520, 280),
-			Parent = screen,
-		}
-	)
+	toastContainer = UIKit.New("Frame", {
+		Name = "Toasts",
+		BackgroundTransparency = 1,
+		AnchorPoint = Vector2.new(0.5, 1),
+		Position = UDim2.new(0.5, 0, 1, -140),
+		Size = UDim2.fromOffset(520, 280),
+		Parent = screen,
+	})
 	local layout = UIKit.List(toastContainer, nil, 4, Enum.HorizontalAlignment.Center)
 	layout.VerticalAlignment = Enum.VerticalAlignment.Bottom
 end

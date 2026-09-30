@@ -45,15 +45,11 @@ function TitlesTab:Refresh()
 		local owned = data.Titles.Owned[id] == true
 		local equipped = data.Titles.Equipped == id
 		local card = UIKit.Panel(self.List, { LayoutOrder = index })
-		UIKit.Label(
-			card,
-			def.DisplayName,
-			{
-				Position = UDim2.fromOffset(10, 4),
-				Size = UDim2.new(1, -120, 0, 22),
-				TextColor3 = owned and UIKit.RarityColor(def.Rarity) or T.SubText,
-			}
-		)
+		UIKit.Label(card, def.DisplayName, {
+			Position = UDim2.fromOffset(10, 4),
+			Size = UDim2.new(1, -120, 0, 22),
+			TextColor3 = owned and UIKit.RarityColor(def.Rarity) or T.SubText,
+		})
 		UIKit.Label(
 			card,
 			owned and def.Rarity or ("Locked: " .. def.Source),
@@ -63,7 +59,11 @@ function TitlesTab:Refresh()
 			UIKit.Button(
 				card,
 				equipped and "Unequip" or "Equip",
-				{ Position = UDim2.new(1, -106, 0, 12), Size = UDim2.fromOffset(96, 34), BackgroundColor3 = equipped and T.Good or T.Accent },
+				{
+					Position = UDim2.new(1, -106, 0, 12),
+					Size = UDim2.fromOffset(96, 34),
+					BackgroundColor3 = equipped and T.Good or T.Accent,
+				},
 				function()
 					local ok, err = Net.Invoke("ProfileAction", "EquipTitle", equipped and "" or id)
 					if not ok and err then

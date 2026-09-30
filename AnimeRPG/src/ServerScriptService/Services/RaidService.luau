@@ -252,18 +252,14 @@ local function eclipseMechanic(run, bossEntity)
 						end
 					end
 					if not safe then
-						Registry.Get("DamageService"):Deal(
-							bossEntity,
-							entity,
-							{
-								Base = entity.Humanoid.MaxHealth * 0.7,
-								Kind = "Ultimate",
-								DamageType = "True",
-								Unblockable = true,
-								Color = Color3.fromRGB(80, 0, 40),
-								AllowDeadAttacker = true,
-							}
-						)
+						Registry.Get("DamageService"):Deal(bossEntity, entity, {
+							Base = entity.Humanoid.MaxHealth * 0.7,
+							Kind = "Ultimate",
+							DamageType = "True",
+							Unblockable = true,
+							Color = Color3.fromRGB(80, 0, 40),
+							AllowDeadAttacker = true,
+						})
 					end
 				end
 			end

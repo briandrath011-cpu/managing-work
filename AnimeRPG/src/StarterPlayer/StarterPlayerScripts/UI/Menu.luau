@@ -88,7 +88,13 @@ function Menu:Init()
 	UIKit.List(sidebar, nil, 5)
 	local body = UIKit.New(
 		"Frame",
-		{ Name = "Body", BackgroundTransparency = 1, Position = UDim2.fromOffset(162, 0), Size = UDim2.new(1, -162, 1, 0), Parent = content }
+		{
+			Name = "Body",
+			BackgroundTransparency = 1,
+			Position = UDim2.fromOffset(162, 0),
+			Size = UDim2.new(1, -162, 1, 0),
+			Parent = content,
+		}
 	)
 	for index, name in ipairs(TAB_ORDER) do
 		local button = UIKit.Button(sidebar, name, { Size = UDim2.new(1, 0, 0, 46), LayoutOrder = index, TextSize = 15 }, function()

@@ -167,19 +167,15 @@ function InstanceUI:Init()
 		invoke(lobbyType, "Leave")
 		lobbyPanel.Visible = false
 	end)
-	timerLabel = UIKit.Label(
-		screen,
-		"",
-		{
-			AnchorPoint = Vector2.new(0.5, 0),
-			Position = UDim2.new(0.5, 0, 0, 140),
-			Size = UDim2.fromOffset(300, 30),
-			TextSize = 22,
-			Font = T.FontBlack,
-			TextXAlignment = Enum.TextXAlignment.Center,
-			TextStrokeTransparency = 0.3,
-		}
-	)
+	timerLabel = UIKit.Label(screen, "", {
+		AnchorPoint = Vector2.new(0.5, 0),
+		Position = UDim2.new(0.5, 0, 0, 140),
+		Size = UDim2.fromOffset(300, 30),
+		TextSize = 22,
+		Font = T.FontBlack,
+		TextXAlignment = Enum.TextXAlignment.Center,
+		TextStrokeTransparency = 0.3,
+	})
 
 	local hud = function()
 		return ClientRegistry.Get("HUD")

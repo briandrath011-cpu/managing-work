@@ -83,49 +83,34 @@ function QuestsTab:Refresh()
 		if def then
 			index += 1
 			local height = 70 + #def.Objectives * 18
-			local card = UIKit.Panel(
-				self.List,
-				{
-					Size = UDim2.new(1, -8, 0, height),
-					LayoutOrder = def.Type == "Daily" and 100 + index or (def.Type == "Weekly" and 200 + index or index),
-				}
-			)
+			local card = UIKit.Panel(self.List, {
+				Size = UDim2.new(1, -8, 0, height),
+				LayoutOrder = def.Type == "Daily" and 100 + index or (def.Type == "Weekly" and 200 + index or index),
+			})
 			local done = QuestLogic.IsComplete(def, active.Progress, countItem)
-			UIKit.Label(
-				card,
-				def.Name,
-				{
-					Position = UDim2.fromOffset(12, 6),
-					Size = UDim2.new(1, -140, 0, 22),
-					TextSize = 17,
-					Font = T.FontBlack,
-					TextColor3 = done and T.Good or T.Text,
-				}
-			)
-			UIKit.Label(
-				card,
-				def.Type,
-				{
-					Position = UDim2.new(1, -240, 0, 8),
-					Size = UDim2.fromOffset(100, 18),
-					TextSize = 12,
-					TextColor3 = TYPE_COLORS[def.Type] or T.SubText,
-					TextXAlignment = Enum.TextXAlignment.Right,
-				}
-			)
+			UIKit.Label(card, def.Name, {
+				Position = UDim2.fromOffset(12, 6),
+				Size = UDim2.new(1, -140, 0, 22),
+				TextSize = 17,
+				Font = T.FontBlack,
+				TextColor3 = done and T.Good or T.Text,
+			})
+			UIKit.Label(card, def.Type, {
+				Position = UDim2.new(1, -240, 0, 8),
+				Size = UDim2.fromOffset(100, 18),
+				TextSize = 12,
+				TextColor3 = TYPE_COLORS[def.Type] or T.SubText,
+				TextXAlignment = Enum.TextXAlignment.Right,
+			})
 			for i, objective in ipairs(def.Objectives) do
 				local have, need = QuestLogic.ObjectiveProgress(objective, active.Progress[i], countItem)
-				UIKit.Label(
-					card,
-					"• " .. QuestLogic.Describe(objective, have, need),
-					{
-						Position = UDim2.fromOffset(16, 30 + (i - 1) * 18),
-						Size = UDim2.new(1, -32, 0, 18),
-						TextSize = 13,
-						Font = T.Font,
-						TextColor3 = have >= need and T.Good or T.Text,
-					}
-				)
+				UIKit.Label(card, "• " .. QuestLogic.Describe(objective, have, need), {
+					Position = UDim2.fromOffset(16, 30 + (i - 1) * 18),
+					Size = UDim2.new(1, -32, 0, 18),
+					TextSize = 13,
+					Font = T.Font,
+					TextColor3 = have >= need and T.Good or T.Text,
+				})
 			end
 			local turnIn = def.TurnIn and NPCCatalog[def.TurnIn]
 			local footer = "Rewards: " .. QuestsTab.RewardText(def.Rewards)

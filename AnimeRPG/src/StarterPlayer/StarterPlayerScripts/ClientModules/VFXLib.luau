@@ -618,14 +618,10 @@ function Effects.Pillar(p)
 		Color = p.Color or Color3.new(1, 1, 1),
 		Transparency = 0.1,
 	})
-	tween(
-		pillar,
-		0.15,
-		{
-			Size = Vector3.new(height, size, size),
-			CFrame = CFrame.new(base + Vector3.new(0, height / 2, 0)) * CFrame.Angles(0, 0, math.rad(90)),
-		}
-	)
+	tween(pillar, 0.15, {
+		Size = Vector3.new(height, size, size),
+		CFrame = CFrame.new(base + Vector3.new(0, height / 2, 0)) * CFrame.Angles(0, 0, math.rad(90)),
+	})
 	task.delay(0.2, function()
 		fadeOut(pillar, 0.35, Vector3.new(height, 0.5, 0.5))
 	end)

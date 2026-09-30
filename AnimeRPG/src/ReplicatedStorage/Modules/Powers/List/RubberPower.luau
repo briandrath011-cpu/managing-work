@@ -50,16 +50,13 @@ return {
 				ctx:Anim("Rubber_Gatling")
 				for i = 1, 12 do
 					local cf = CFrame.lookAt(ctx.Root.Position + ctx.AimDirection * 8, ctx.Root.Position + ctx.AimDirection * 16)
-					ctx:FX(
-						"Stretch",
-						{
-							From = ctx.Root.Position,
-							To = cf.Position + Vector3.new(math.random(-3, 3), math.random(-2, 2), 0),
-							Color = SKIN,
-							Width = 0.8,
-							Duration = 0.1,
-						}
-					)
+					ctx:FX("Stretch", {
+						From = ctx.Root.Position,
+						To = cf.Position + Vector3.new(math.random(-3, 3), math.random(-2, 2), 0),
+						Color = SKIN,
+						Width = 0.8,
+						Duration = 0.1,
+					})
 					ctx:HitBox(cf, Vector3.new(9, 8, 16), { Stun = 0.35, Knockback = i == 12 and 60 or 0 })
 					if not ctx:Wait(0.08) then
 						return

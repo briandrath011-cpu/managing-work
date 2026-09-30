@@ -225,31 +225,24 @@ function UIKit.Bar(parent: Instance, color: Color3, props: { [string]: any }?)
 	end
 	UIKit.Corner(back, 6)
 	UIKit.Stroke(back, color, 1, 0.6)
-	local lag = UIKit.New(
-		"Frame",
-		{
-			BackgroundColor3 = Color3.new(1, 1, 1),
-			BackgroundTransparency = 0.4,
-			BorderSizePixel = 0,
-			Size = UDim2.fromScale(1, 1),
-			Parent = back,
-		}
-	)
+	local lag = UIKit.New("Frame", {
+		BackgroundColor3 = Color3.new(1, 1, 1),
+		BackgroundTransparency = 0.4,
+		BorderSizePixel = 0,
+		Size = UDim2.fromScale(1, 1),
+		Parent = back,
+	})
 	UIKit.Corner(lag, 6)
 	local fill = UIKit.New("Frame", { BackgroundColor3 = color, BorderSizePixel = 0, Size = UDim2.fromScale(1, 1), Parent = back })
 	UIKit.Corner(fill, 6)
 	UIKit.Gradient(fill, color:Lerp(Color3.new(1, 1, 1), 0.25), color, 90)
-	local label = UIKit.Label(
-		back,
-		"",
-		{
-			Size = UDim2.fromScale(1, 1),
-			TextXAlignment = Enum.TextXAlignment.Center,
-			TextSize = 13,
-			ZIndex = 3,
-			TextStrokeTransparency = 0.5,
-		}
-	)
+	local label = UIKit.Label(back, "", {
+		Size = UDim2.fromScale(1, 1),
+		TextXAlignment = Enum.TextXAlignment.Center,
+		TextSize = 13,
+		ZIndex = 3,
+		TextStrokeTransparency = 0.5,
+	})
 	local current = 1
 	local function set(ratio: number, text: string?)
 		ratio = math.clamp(ratio, 0, 1)
@@ -359,16 +352,13 @@ function UIKit.Window(screen: Instance, title: string, size: UDim2, onClose: (()
 		title,
 		{ Position = UDim2.fromOffset(16, 0), Size = UDim2.new(1, -70, 1, 0), TextSize = 20, Font = T.FontBlack }
 	)
-	local content = UIKit.New(
-		"Frame",
-		{
-			Name = "Content",
-			BackgroundTransparency = 1,
-			Position = UDim2.fromOffset(12, 52),
-			Size = UDim2.new(1, -24, 1, -64),
-			Parent = window,
-		}
-	)
+	local content = UIKit.New("Frame", {
+		Name = "Content",
+		BackgroundTransparency = 1,
+		Position = UDim2.fromOffset(12, 52),
+		Size = UDim2.new(1, -24, 1, -64),
+		Parent = window,
+	})
 	local function close()
 		window.Visible = false
 		if onClose then
@@ -398,18 +388,15 @@ end
 function UIKit.Slider(parent: Instance, label: string, value: number, onChanged: (number) -> ())
 	local frame = UIKit.New("Frame", { BackgroundTransparency = 1, Size = UDim2.new(1, 0, 0, 44), Parent = parent })
 	local text = UIKit.Label(frame, label, { Size = UDim2.new(1, 0, 0, 20) })
-	local track = UIKit.New(
-		"TextButton",
-		{
-			Text = "",
-			AutoButtonColor = false,
-			BackgroundColor3 = T.PanelDark,
-			Position = UDim2.fromOffset(0, 26),
-			Size = UDim2.new(1, -60, 0, 10),
-			Parent = frame,
-			Selectable = true,
-		}
-	)
+	local track = UIKit.New("TextButton", {
+		Text = "",
+		AutoButtonColor = false,
+		BackgroundColor3 = T.PanelDark,
+		Position = UDim2.fromOffset(0, 26),
+		Size = UDim2.new(1, -60, 0, 10),
+		Parent = frame,
+		Selectable = true,
+	})
 	UIKit.Corner(track, 5)
 	local fill = UIKit.New("Frame", { BackgroundColor3 = T.Accent, BorderSizePixel = 0, Size = UDim2.fromScale(value, 1), Parent = track })
 	UIKit.Corner(fill, 5)

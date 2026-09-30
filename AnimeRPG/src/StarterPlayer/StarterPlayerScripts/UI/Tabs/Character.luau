@@ -149,26 +149,21 @@ function CharacterTab:Refresh()
 		local def = Transformations.List[id]
 		local unlocked = data.Transformations.Unlocked[id] == true
 		local active = data.Transformations.Equipped == id
-		UIKit.Button(
-			side,
-			string.format("%s%s %s", active and "▶ " or "", def.DisplayName, unlocked and "" or "(locked)"),
-			{
-				Size = UDim2.new(1, 0, 0, 34),
-				BackgroundColor3 = active and T.Accent or T.PanelLight,
-				TextColor3 = unlocked and UIKit.RarityColor(def.Rarity) or T.SubText,
-			},
-			function()
-				if not unlocked then
-					ClientRegistry.Get("HUD")
-						:Toast(def.UnlockLevel and ("Unlocks at level " .. def.UnlockLevel) or "Unlock with a rare boss drop", "Error")
-					return
-				end
-				local ok, err = Net.Invoke("ProfileAction", "EquipTransformation", id)
-				if not ok and err then
-					ClientRegistry.Get("HUD"):Toast(err, "Error")
-				end
+		UIKit.Button(side, string.format("%s%s %s", active and "▶ " or "", def.DisplayName, unlocked and "" or "(locked)"), {
+			Size = UDim2.new(1, 0, 0, 34),
+			BackgroundColor3 = active and T.Accent or T.PanelLight,
+			TextColor3 = unlocked and UIKit.RarityColor(def.Rarity) or T.SubText,
+		}, function()
+			if not unlocked then
+				ClientRegistry.Get("HUD")
+					:Toast(def.UnlockLevel and ("Unlocks at level " .. def.UnlockLevel) or "Unlock with a rare boss drop", "Error")
+				return
 			end
-		)
+			local ok, err = Net.Invoke("ProfileAction", "EquipTransformation", id)
+			if not ok and err then
+				ClientRegistry.Get("HUD"):Toast(err, "Error")
+			end
+		end)
 	end
 end
 

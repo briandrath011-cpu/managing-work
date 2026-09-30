@@ -158,19 +158,14 @@ function PowersTab:Refresh()
 				def.Rarity,
 				{ Position = UDim2.fromOffset(10, 26), Size = UDim2.new(1, -250, 0, 18), TextSize = 12, TextColor3 = T.SubText }
 			)
-			UIKit.Button(
-				row,
-				equipped and "Equipped" or "Equip",
-				{
-					Position = UDim2.new(1, -236, 0, 9),
-					Size = UDim2.fromOffset(76, 34),
-					TextSize = 13,
-					BackgroundColor3 = equipped and T.Good or T.Accent,
-				},
-				function()
-					action("Equip", item.Uid)
-				end
-			)
+			UIKit.Button(row, equipped and "Equipped" or "Equip", {
+				Position = UDim2.new(1, -236, 0, 9),
+				Size = UDim2.fromOffset(76, 34),
+				TextSize = 13,
+				BackgroundColor3 = equipped and T.Good or T.Accent,
+			}, function()
+				action("Equip", item.Uid)
+			end)
 			UIKit.Button(
 				row,
 				item.Entry.Locked and "Unlock" or "Lock",

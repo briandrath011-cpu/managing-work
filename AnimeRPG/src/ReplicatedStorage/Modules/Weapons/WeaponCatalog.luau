@@ -16,199 +16,157 @@ local function add(id: string, def)
 end
 
 -- Starter / common --------------------------------------------------------------------------
-add(
-	"WoodenKatana",
-	{
-		DisplayName = "Wooden Katana",
-		Class = "Katana",
-		Rarity = "Common",
-		Damage = 10,
-		LevelRequired = 1,
-		Color = C(170, 120, 70),
-		Accent = C(90, 60, 30),
-		Description = "A training sword.",
-	}
-)
-add(
-	"RustyDagger",
-	{
-		DisplayName = "Rusty Dagger",
-		Class = "Dagger",
-		Rarity = "Common",
-		Damage = 9,
-		LevelRequired = 1,
-		Color = C(150, 110, 90),
-		Accent = C(80, 60, 40),
-		Description = "Better than nothing.",
-	}
-)
-add(
-	"IronGreatsword",
-	{
-		DisplayName = "Iron Greatsword",
-		Class = "Greatsword",
-		Rarity = "Common",
-		Damage = 12,
-		LevelRequired = 5,
-		Color = C(180, 180, 190),
-		Accent = C(90, 90, 100),
-		Description = "Heavy iron slab.",
-	}
-)
-add(
-	"FarmerScythe",
-	{
-		DisplayName = "Farmer's Scythe",
-		Class = "Scythe",
-		Rarity = "Common",
-		Damage = 11,
-		LevelRequired = 5,
-		Color = C(160, 160, 150),
-		Accent = C(110, 80, 50),
-		Description = "Harvest season.",
-	}
-)
-add(
-	"GuardSpear",
-	{
-		DisplayName = "Guard Spear",
-		Class = "Spear",
-		Rarity = "Common",
-		Damage = 11,
-		LevelRequired = 5,
-		Color = C(200, 200, 210),
-		Accent = C(120, 40, 40),
-		Description = "Standard issue spear.",
-	}
-)
-add(
-	"BrawlerGauntlets",
-	{
-		DisplayName = "Brawler Gauntlets",
-		Class = "Gauntlets",
-		Rarity = "Common",
-		Damage = 11,
-		LevelRequired = 5,
-		Color = C(120, 120, 130),
-		Accent = C(200, 60, 60),
-		Description = "Knuckle guards.",
-	}
-)
-add(
-	"ApprenticeStaff",
-	{
-		DisplayName = "Apprentice Staff",
-		Class = "Staff",
-		Rarity = "Common",
-		Damage = 10,
-		LevelRequired = 5,
-		Color = C(140, 100, 60),
-		Accent = C(100, 180, 255),
-		Description = "Hums faintly.",
-	}
-)
-add(
-	"TwinKnives",
-	{
-		DisplayName = "Twin Knives",
-		Class = "DualBlades",
-		Rarity = "Common",
-		Damage = 10,
-		LevelRequired = 5,
-		Color = C(200, 200, 200),
-		Accent = C(60, 60, 60),
-		Description = "Quick and light.",
-	}
-)
+add("WoodenKatana", {
+	DisplayName = "Wooden Katana",
+	Class = "Katana",
+	Rarity = "Common",
+	Damage = 10,
+	LevelRequired = 1,
+	Color = C(170, 120, 70),
+	Accent = C(90, 60, 30),
+	Description = "A training sword.",
+})
+add("RustyDagger", {
+	DisplayName = "Rusty Dagger",
+	Class = "Dagger",
+	Rarity = "Common",
+	Damage = 9,
+	LevelRequired = 1,
+	Color = C(150, 110, 90),
+	Accent = C(80, 60, 40),
+	Description = "Better than nothing.",
+})
+add("IronGreatsword", {
+	DisplayName = "Iron Greatsword",
+	Class = "Greatsword",
+	Rarity = "Common",
+	Damage = 12,
+	LevelRequired = 5,
+	Color = C(180, 180, 190),
+	Accent = C(90, 90, 100),
+	Description = "Heavy iron slab.",
+})
+add("FarmerScythe", {
+	DisplayName = "Farmer's Scythe",
+	Class = "Scythe",
+	Rarity = "Common",
+	Damage = 11,
+	LevelRequired = 5,
+	Color = C(160, 160, 150),
+	Accent = C(110, 80, 50),
+	Description = "Harvest season.",
+})
+add("GuardSpear", {
+	DisplayName = "Guard Spear",
+	Class = "Spear",
+	Rarity = "Common",
+	Damage = 11,
+	LevelRequired = 5,
+	Color = C(200, 200, 210),
+	Accent = C(120, 40, 40),
+	Description = "Standard issue spear.",
+})
+add("BrawlerGauntlets", {
+	DisplayName = "Brawler Gauntlets",
+	Class = "Gauntlets",
+	Rarity = "Common",
+	Damage = 11,
+	LevelRequired = 5,
+	Color = C(120, 120, 130),
+	Accent = C(200, 60, 60),
+	Description = "Knuckle guards.",
+})
+add("ApprenticeStaff", {
+	DisplayName = "Apprentice Staff",
+	Class = "Staff",
+	Rarity = "Common",
+	Damage = 10,
+	LevelRequired = 5,
+	Color = C(140, 100, 60),
+	Accent = C(100, 180, 255),
+	Description = "Hums faintly.",
+})
+add("TwinKnives", {
+	DisplayName = "Twin Knives",
+	Class = "DualBlades",
+	Rarity = "Common",
+	Damage = 10,
+	LevelRequired = 5,
+	Color = C(200, 200, 200),
+	Accent = C(60, 60, 60),
+	Description = "Quick and light.",
+})
 
 -- Region weapons --------------------------------------------------------------------------------
-add(
-	"BanditCleaver",
-	{
-		DisplayName = "Bandit Cleaver",
-		Class = "Greatsword",
-		Rarity = "Rare",
-		Damage = 20,
-		LevelRequired = 12,
-		Color = C(160, 70, 50),
-		Accent = C(220, 180, 80),
-		Description = "The Bandit Chief's favorite.",
-		Passive = { Name = "Plunder", Description = "+10% gold from enemies.", Modifiers = { GoldBonus = 0.1 } },
-	}
-)
-add(
-	"SandstormScimitar",
-	{
-		DisplayName = "Sandstorm Scimitar",
-		Class = "Katana",
-		Rarity = "Rare",
-		Damage = 30,
-		LevelRequired = 22,
-		Color = C(230, 200, 130),
-		Accent = C(200, 140, 50),
-		Description = "Carried by desert guards.",
-		Passive = { Name = "Sandblast", Description = "Hits may blind (stun).", OnHit = { Chance = 0.12, Effect = "Stun", Duration = 0.4 } },
-	}
-)
-add(
-	"PharaohStaff",
-	{
-		DisplayName = "Pharaoh's Staff",
-		Class = "Staff",
-		Rarity = "Epic",
-		Damage = 40,
-		LevelRequired = 30,
-		Color = C(250, 200, 60),
-		Accent = C(60, 200, 200),
-		Description = "Staff of the Sand Pharaoh.",
-		Passive = { Name = "Sun God", Description = "+10% power damage.", Modifiers = { PowerDamage = 0.1 } },
-	}
-)
-add(
-	"SkyPiercer",
-	{
-		DisplayName = "Sky Piercer",
-		Class = "Spear",
-		Rarity = "Epic",
-		Damage = 50,
-		LevelRequired = 48,
-		Color = C(220, 240, 255),
-		Accent = C(120, 180, 255),
-		Description = "Forged above the clouds.",
-		Passive = { Name = "Updraft", Description = "Finishers launch higher.", Modifiers = { MoveSpeed = 2 } },
-	}
-)
-add(
-	"FrostbiteDagger",
-	{
-		DisplayName = "Frostbite",
-		Class = "Dagger",
-		Rarity = "Epic",
-		Damage = 64,
-		LevelRequired = 78,
-		Color = C(170, 230, 255),
-		Accent = C(240, 250, 255),
-		Description = "Freezes the blood.",
-		Passive = {
-			Name = "Chill",
-			Description = "Hits may freeze.",
-			OnHit = { Chance = 0.1, Effect = "Freeze", Duration = 0.8, Color = C(170, 230, 255) },
-		},
-	}
-)
-add(
-	"GlacierHammerFists",
-	{
-		DisplayName = "Glacier Fists",
-		Class = "Gauntlets",
-		Rarity = "Epic",
-		Damage = 66,
-		LevelRequired = 82,
-		Color = C(200, 240, 255),
-		Accent = C(90, 160, 220),
-		Description = "Ice-forged knuckles.",
-	}
-)
+add("BanditCleaver", {
+	DisplayName = "Bandit Cleaver",
+	Class = "Greatsword",
+	Rarity = "Rare",
+	Damage = 20,
+	LevelRequired = 12,
+	Color = C(160, 70, 50),
+	Accent = C(220, 180, 80),
+	Description = "The Bandit Chief's favorite.",
+	Passive = { Name = "Plunder", Description = "+10% gold from enemies.", Modifiers = { GoldBonus = 0.1 } },
+})
+add("SandstormScimitar", {
+	DisplayName = "Sandstorm Scimitar",
+	Class = "Katana",
+	Rarity = "Rare",
+	Damage = 30,
+	LevelRequired = 22,
+	Color = C(230, 200, 130),
+	Accent = C(200, 140, 50),
+	Description = "Carried by desert guards.",
+	Passive = { Name = "Sandblast", Description = "Hits may blind (stun).", OnHit = { Chance = 0.12, Effect = "Stun", Duration = 0.4 } },
+})
+add("PharaohStaff", {
+	DisplayName = "Pharaoh's Staff",
+	Class = "Staff",
+	Rarity = "Epic",
+	Damage = 40,
+	LevelRequired = 30,
+	Color = C(250, 200, 60),
+	Accent = C(60, 200, 200),
+	Description = "Staff of the Sand Pharaoh.",
+	Passive = { Name = "Sun God", Description = "+10% power damage.", Modifiers = { PowerDamage = 0.1 } },
+})
+add("SkyPiercer", {
+	DisplayName = "Sky Piercer",
+	Class = "Spear",
+	Rarity = "Epic",
+	Damage = 50,
+	LevelRequired = 48,
+	Color = C(220, 240, 255),
+	Accent = C(120, 180, 255),
+	Description = "Forged above the clouds.",
+	Passive = { Name = "Updraft", Description = "Finishers launch higher.", Modifiers = { MoveSpeed = 2 } },
+})
+add("FrostbiteDagger", {
+	DisplayName = "Frostbite",
+	Class = "Dagger",
+	Rarity = "Epic",
+	Damage = 64,
+	LevelRequired = 78,
+	Color = C(170, 230, 255),
+	Accent = C(240, 250, 255),
+	Description = "Freezes the blood.",
+	Passive = {
+		Name = "Chill",
+		Description = "Hits may freeze.",
+		OnHit = { Chance = 0.1, Effect = "Freeze", Duration = 0.8, Color = C(170, 230, 255) },
+	},
+})
+add("GlacierHammerFists", {
+	DisplayName = "Glacier Fists",
+	Class = "Gauntlets",
+	Rarity = "Epic",
+	Damage = 66,
+	LevelRequired = 82,
+	Color = C(200, 240, 255),
+	Accent = C(90, 160, 220),
+	Description = "Ice-forged knuckles.",
+})
 
 -- Boss / rare weapons ------------------------------------------------------------------------------
 add("NightSlayer", {

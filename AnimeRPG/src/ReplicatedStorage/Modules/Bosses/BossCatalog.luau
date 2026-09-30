@@ -272,90 +272,75 @@ add("RuinColossus", {
 })
 
 -- Dungeon bosses (level set by the dungeon + difficulty)
-add(
-	"HollowWarlord",
-	{
-		DisplayName = "Hollow Warlord",
-		Level = 0,
-		HealthMultiplier = 12,
-		DamageMultiplier = 1.4,
-		Scale = 1.8,
-		WeaponClass = "Greatsword",
-		Colors = { Body = C(60, 80, 50), Accent = C(200, 255, 120) },
-		AttackColor = C(200, 255, 120),
-		Minion = "DungeonMinion",
-		Ultimate = "Nova",
-		RespawnTime = 0,
-		Drops = {},
-	}
-)
-add(
-	"TombGuardian",
-	{
-		DisplayName = "Tomb Guardian",
-		Level = 0,
-		HealthMultiplier = 14,
-		DamageMultiplier = 1.45,
-		Scale = 2.2,
-		WeaponClass = "Spear",
-		Colors = { Body = C(200, 180, 120), Accent = C(60, 200, 190) },
-		AttackColor = C(255, 220, 120),
-		Minion = "MummyGuard",
-		Ultimate = "Cataclysm",
-		RespawnTime = 0,
-		Drops = {},
-	}
-)
-add(
-	"SkyWarden",
-	{
-		DisplayName = "Sky Warden",
-		Level = 0,
-		HealthMultiplier = 15,
-		DamageMultiplier = 1.5,
-		Scale = 2,
-		WeaponClass = "Spear",
-		Colors = { Body = C(220, 230, 255), Accent = C(255, 250, 120) },
-		AttackColor = C(255, 250, 120),
-		Minion = "Harpy",
-		Ultimate = "Domain",
-		RespawnTime = 0,
-		Drops = {},
-	}
-)
-add(
-	"GlacierWyrm",
-	{
-		DisplayName = "Glacier Wyrm",
-		Level = 0,
-		HealthMultiplier = 16,
-		DamageMultiplier = 1.5,
-		Scale = 2.6,
-		Colors = { Body = C(150, 200, 240), Accent = C(240, 250, 255) },
-		AttackColor = C(170, 230, 255),
-		Minion = "FrostWolf",
-		Ultimate = "Nova",
-		RespawnTime = 0,
-		Drops = {},
-	}
-)
-add(
-	"InfernalArchfiend",
-	{
-		DisplayName = "Infernal Archfiend",
-		Level = 0,
-		HealthMultiplier = 18,
-		DamageMultiplier = 1.55,
-		Scale = 2.4,
-		WeaponClass = "Scythe",
-		Colors = { Body = C(90, 10, 10), Accent = C(255, 120, 20) },
-		AttackColor = C(255, 90, 20),
-		Minion = "Imp",
-		Ultimate = "Cataclysm",
-		RespawnTime = 0,
-		Drops = {},
-	}
-)
+add("HollowWarlord", {
+	DisplayName = "Hollow Warlord",
+	Level = 0,
+	HealthMultiplier = 12,
+	DamageMultiplier = 1.4,
+	Scale = 1.8,
+	WeaponClass = "Greatsword",
+	Colors = { Body = C(60, 80, 50), Accent = C(200, 255, 120) },
+	AttackColor = C(200, 255, 120),
+	Minion = "DungeonMinion",
+	Ultimate = "Nova",
+	RespawnTime = 0,
+	Drops = {},
+})
+add("TombGuardian", {
+	DisplayName = "Tomb Guardian",
+	Level = 0,
+	HealthMultiplier = 14,
+	DamageMultiplier = 1.45,
+	Scale = 2.2,
+	WeaponClass = "Spear",
+	Colors = { Body = C(200, 180, 120), Accent = C(60, 200, 190) },
+	AttackColor = C(255, 220, 120),
+	Minion = "MummyGuard",
+	Ultimate = "Cataclysm",
+	RespawnTime = 0,
+	Drops = {},
+})
+add("SkyWarden", {
+	DisplayName = "Sky Warden",
+	Level = 0,
+	HealthMultiplier = 15,
+	DamageMultiplier = 1.5,
+	Scale = 2,
+	WeaponClass = "Spear",
+	Colors = { Body = C(220, 230, 255), Accent = C(255, 250, 120) },
+	AttackColor = C(255, 250, 120),
+	Minion = "Harpy",
+	Ultimate = "Domain",
+	RespawnTime = 0,
+	Drops = {},
+})
+add("GlacierWyrm", {
+	DisplayName = "Glacier Wyrm",
+	Level = 0,
+	HealthMultiplier = 16,
+	DamageMultiplier = 1.5,
+	Scale = 2.6,
+	Colors = { Body = C(150, 200, 240), Accent = C(240, 250, 255) },
+	AttackColor = C(170, 230, 255),
+	Minion = "FrostWolf",
+	Ultimate = "Nova",
+	RespawnTime = 0,
+	Drops = {},
+})
+add("InfernalArchfiend", {
+	DisplayName = "Infernal Archfiend",
+	Level = 0,
+	HealthMultiplier = 18,
+	DamageMultiplier = 1.55,
+	Scale = 2.4,
+	WeaponClass = "Scythe",
+	Colors = { Body = C(90, 10, 10), Accent = C(255, 120, 20) },
+	AttackColor = C(255, 90, 20),
+	Minion = "Imp",
+	Ultimate = "Cataclysm",
+	RespawnTime = 0,
+	Drops = {},
+})
 
 -- Raid boss
 add("EclipseTyrant", {

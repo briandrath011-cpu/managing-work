@@ -237,28 +237,21 @@ function InventoryTab:Refresh()
 			stroke.Transparency = 0.1
 			stroke.Thickness = self.Selected == item.Uid and 3 or 1.5
 		end
-		local swatch = UIKit.New(
-			"Frame",
-			{
-				BackgroundColor3 = item.Def.Color or color,
-				Size = UDim2.fromOffset(36, 36),
-				Position = UDim2.new(0.5, -18, 0, 8),
-				Parent = card,
-			}
-		)
+		local swatch = UIKit.New("Frame", {
+			BackgroundColor3 = item.Def.Color or color,
+			Size = UDim2.fromOffset(36, 36),
+			Position = UDim2.new(0.5, -18, 0, 8),
+			Parent = card,
+		})
 		UIKit.Corner(swatch, 8)
 		UIKit.Gradient(swatch, (item.Def.Color or color):Lerp(Color3.new(1, 1, 1), 0.3), item.Def.Color or color, 45)
-		UIKit.Label(
-			card,
-			item.Def.DisplayName,
-			{
-				Position = UDim2.fromOffset(4, 48),
-				Size = UDim2.new(1, -8, 0, 32),
-				TextSize = 11,
-				TextXAlignment = Enum.TextXAlignment.Center,
-				TextColor3 = color,
-			}
-		)
+		UIKit.Label(card, item.Def.DisplayName, {
+			Position = UDim2.fromOffset(4, 48),
+			Size = UDim2.new(1, -8, 0, 32),
+			TextSize = 11,
+			TextXAlignment = Enum.TextXAlignment.Center,
+			TextColor3 = color,
+		})
 		local badges = ""
 		if equippedSet[item.Uid] then
 			badges ..= "E "
@@ -271,16 +264,12 @@ function InventoryTab:Refresh()
 		end
 		UIKit.Label(card, badges, { Position = UDim2.fromOffset(4, 2), Size = UDim2.new(1, -8, 0, 14), TextSize = 11, TextColor3 = T.Gold })
 		if item.Entry.Amount > 1 then
-			UIKit.Label(
-				card,
-				"x" .. item.Entry.Amount,
-				{
-					Position = UDim2.new(0, 4, 1, -18),
-					Size = UDim2.new(1, -8, 0, 14),
-					TextSize = 12,
-					TextXAlignment = Enum.TextXAlignment.Right,
-				}
-			)
+			UIKit.Label(card, "x" .. item.Entry.Amount, {
+				Position = UDim2.new(0, 4, 1, -18),
+				Size = UDim2.new(1, -8, 0, 14),
+				TextSize = 12,
+				TextXAlignment = Enum.TextXAlignment.Right,
+			})
 		end
 	end
 	self:ShowDetail(self.Selected)

@@ -316,18 +316,14 @@ local function runDungeon(run)
 			return
 		end
 		run.Checkpoint = run.Rooms[index] - Vector3.new(0, 0, ROOM_SIZE / 2 - 8)
-		send(
-			run.Members,
-			"Room",
-			{
-				Type = "Dungeon",
-				Room = index,
-				Total = #rooms,
-				Kind = room.Kind,
-				Text = room.Kind == "Boss" and "FINAL ROOM" or ("Room " .. index),
-				Deadline = run.Deadline - os.clock(),
-			}
-		)
+		send(run.Members, "Room", {
+			Type = "Dungeon",
+			Room = index,
+			Total = #rooms,
+			Kind = room.Kind,
+			Text = room.Kind == "Boss" and "FINAL ROOM" or ("Room " .. index),
+			Deadline = run.Deadline - os.clock(),
+		})
 		task.wait(1.5)
 		local tag = spawnRoom(run, index, room)
 		if not tag or not waitForClear(run, run.EnemyFolder, tag) then

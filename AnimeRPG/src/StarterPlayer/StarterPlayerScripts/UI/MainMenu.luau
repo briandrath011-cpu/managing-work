@@ -65,19 +65,15 @@ function MainMenu:ShowLoading()
 	screen = UIKit.Screen("MainMenu", 100)
 	loading = UIKit.New("Frame", { BackgroundColor3 = T.Background, Size = UDim2.fromScale(1, 1), Parent = screen })
 	UIKit.Gradient(loading, Color3.fromRGB(30, 15, 60), T.Background, 90)
-	UIKit.Label(
-		loading,
-		GameConfig.GameName,
-		{
-			AnchorPoint = Vector2.new(0.5, 0.5),
-			Position = UDim2.fromScale(0.5, 0.4),
-			Size = UDim2.fromOffset(900, 90),
-			TextSize = 72,
-			Font = T.FontBlack,
-			TextXAlignment = Enum.TextXAlignment.Center,
-			TextColor3 = T.Text,
-		}
-	)
+	UIKit.Label(loading, GameConfig.GameName, {
+		AnchorPoint = Vector2.new(0.5, 0.5),
+		Position = UDim2.fromScale(0.5, 0.4),
+		Size = UDim2.fromOffset(900, 90),
+		TextSize = 72,
+		Font = T.FontBlack,
+		TextXAlignment = Enum.TextXAlignment.Center,
+		TextColor3 = T.Text,
+	})
 	local _, setBar, label = UIKit.Bar(
 		loading,
 		T.Accent,
@@ -202,17 +198,13 @@ function MainMenu:ShowTitle()
 		{ BackgroundColor3 = Color3.new(0, 0, 0), BackgroundTransparency = 0.35, Size = UDim2.new(0.45, 0, 1, 0), Parent = title }
 	)
 	UIKit.Gradient(shade, Color3.new(0, 0, 0), Color3.new(0, 0, 0), 0).Transparency = NumberSequence.new(0.1, 1)
-	UIKit.Label(
-		title,
-		GameConfig.GameName,
-		{
-			Position = UDim2.new(0, 60, 0.16, 0),
-			Size = UDim2.fromOffset(700, 80),
-			TextSize = 64,
-			Font = T.FontBlack,
-			TextStrokeTransparency = 0.4,
-		}
-	)
+	UIKit.Label(title, GameConfig.GameName, {
+		Position = UDim2.new(0, 60, 0.16, 0),
+		Size = UDim2.fromOffset(700, 80),
+		TextSize = 64,
+		Font = T.FontBlack,
+		TextStrokeTransparency = 0.4,
+	})
 	UIKit.Label(
 		title,
 		"Anime Action RPG  •  v" .. GameConfig.Version,
@@ -239,17 +231,13 @@ function MainMenu:ShowTitle()
 	UIKit.Padding(panel, 18)
 	local hint = Platform.Get() == "Mobile" and "Tap PLAY to begin"
 		or (Platform.Get() == "Console" and "Press A to select" or "Click PLAY to begin")
-	UIKit.Label(
-		title,
-		hint,
-		{
-			AnchorPoint = Vector2.new(0.5, 1),
-			Position = UDim2.new(0.5, 0, 1, -24),
-			Size = UDim2.fromOffset(500, 24),
-			TextXAlignment = Enum.TextXAlignment.Center,
-			TextColor3 = T.SubText,
-		}
-	)
+	UIKit.Label(title, hint, {
+		AnchorPoint = Vector2.new(0.5, 1),
+		Position = UDim2.new(0.5, 0, 1, -24),
+		Size = UDim2.fromOffset(500, 24),
+		TextXAlignment = Enum.TextXAlignment.Center,
+		TextColor3 = T.SubText,
+	})
 	if Platform.Get() == "Console" then
 		GuiService.SelectedObject = play
 	end

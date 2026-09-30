@@ -32,15 +32,12 @@ local function dashStrike(ctx, distance: number, width: number, spec)
 	ctx:Afterimage()
 	ctx:Dash(ctx.AimDirection, distance, 0.2)
 	ctx:Wait(0.2)
-	ctx:FX(
-		"Slash",
-		{
-			CFrame = CFrame.lookAt(start + ctx.AimDirection * distance / 2, start + ctx.AimDirection * distance),
-			Color = ctx.Color,
-			Size = distance,
-			Heavy = true,
-		}
-	)
+	ctx:FX("Slash", {
+		CFrame = CFrame.lookAt(start + ctx.AimDirection * distance / 2, start + ctx.AimDirection * distance),
+		Color = ctx.Color,
+		Size = distance,
+		Heavy = true,
+	})
 	return ctx:HitLine(start, ctx.AimDirection, distance + 4, width, spec)
 end
 

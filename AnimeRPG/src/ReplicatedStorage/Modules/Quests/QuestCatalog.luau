@@ -232,278 +232,215 @@ add("DS_Journey", {
 })
 
 -- SKY --------------------------------------------------------------------------------------
-add(
-	"SK_Sprites",
-	{
-		Name = "Cloud Cleanup",
-		Type = "Kill",
-		Giver = "SkySage",
-		LevelRequired = 45,
-		Objectives = { { Kind = "Kill", Target = "CloudSprite", Count = 12 } },
-		Rewards = { Exp = 45000, Gold = 7000 },
-		Dialog = { Offer = "Rogue cloud sprites everywhere. Clear 12.", Complete = "The skies are calmer." },
-	}
-)
-add(
-	"SK_Feathers",
-	{
-		Name = "Thunder Feathers",
-		Type = "Collect",
-		Giver = "SkySage",
-		LevelRequired = 50,
-		Objectives = { { Kind = "Collect", Item = "ThunderFeather", Count = 8 } },
-		Rewards = { Exp = 60000, Gold = 9000, Spins = 1 },
-		Dialog = { Offer = "Harpies carry thunder feathers. I need 8.", Complete = "These crackle nicely." },
-	}
-)
-add(
-	"SK_Knights",
-	{
-		Name = "Knights of the Storm",
-		Type = "Kill",
-		Giver = "SkySage",
-		Prerequisite = "SK_Sprites",
-		LevelRequired = 60,
-		Objectives = { { Kind = "Kill", Target = "StormKnight", Count = 8 }, { Kind = "Kill", Target = "ThunderBeast", Count = 3 } },
-		Rewards = { Exp = 110000, Gold = 14000 },
-		Dialog = { Offer = "The Tyrant's knights and beasts must fall.", Complete = "His army is broken." },
-	}
-)
-add(
-	"SK_Tyrant",
-	{
-		Name = "Dethrone the Tyrant",
-		Type = "Boss",
-		Giver = "SkySage",
-		Prerequisite = "SK_Knights",
-		LevelRequired = 68,
-		Objectives = { { Kind = "Boss", Target = "ThunderTyrant", Count = 1 } },
-		Rewards = { Exp = 200000, Gold = 25000, Gems = 40, Spins = 3 },
-		Dialog = { Offer = "Raijin waits on the summit. End the storm.", Complete = "Clear skies at last!" },
-	}
-)
-add(
-	"SK_Dungeon",
-	{
-		Name = "Cloud Citadel",
-		Type = "Dungeon",
-		Giver = "SkySage",
-		LevelRequired = 55,
-		Objectives = { { Kind = "Dungeon", Target = "CloudCitadel", Count = 1 } },
-		Rewards = { Exp = 90000, Gold = 12000, Gems = 25 },
-		Dialog = { Offer = "Clear the Cloud Citadel.", Complete = "The citadel is ours." },
-	}
-)
+add("SK_Sprites", {
+	Name = "Cloud Cleanup",
+	Type = "Kill",
+	Giver = "SkySage",
+	LevelRequired = 45,
+	Objectives = { { Kind = "Kill", Target = "CloudSprite", Count = 12 } },
+	Rewards = { Exp = 45000, Gold = 7000 },
+	Dialog = { Offer = "Rogue cloud sprites everywhere. Clear 12.", Complete = "The skies are calmer." },
+})
+add("SK_Feathers", {
+	Name = "Thunder Feathers",
+	Type = "Collect",
+	Giver = "SkySage",
+	LevelRequired = 50,
+	Objectives = { { Kind = "Collect", Item = "ThunderFeather", Count = 8 } },
+	Rewards = { Exp = 60000, Gold = 9000, Spins = 1 },
+	Dialog = { Offer = "Harpies carry thunder feathers. I need 8.", Complete = "These crackle nicely." },
+})
+add("SK_Knights", {
+	Name = "Knights of the Storm",
+	Type = "Kill",
+	Giver = "SkySage",
+	Prerequisite = "SK_Sprites",
+	LevelRequired = 60,
+	Objectives = { { Kind = "Kill", Target = "StormKnight", Count = 8 }, { Kind = "Kill", Target = "ThunderBeast", Count = 3 } },
+	Rewards = { Exp = 110000, Gold = 14000 },
+	Dialog = { Offer = "The Tyrant's knights and beasts must fall.", Complete = "His army is broken." },
+})
+add("SK_Tyrant", {
+	Name = "Dethrone the Tyrant",
+	Type = "Boss",
+	Giver = "SkySage",
+	Prerequisite = "SK_Knights",
+	LevelRequired = 68,
+	Objectives = { { Kind = "Boss", Target = "ThunderTyrant", Count = 1 } },
+	Rewards = { Exp = 200000, Gold = 25000, Gems = 40, Spins = 3 },
+	Dialog = { Offer = "Raijin waits on the summit. End the storm.", Complete = "Clear skies at last!" },
+})
+add("SK_Dungeon", {
+	Name = "Cloud Citadel",
+	Type = "Dungeon",
+	Giver = "SkySage",
+	LevelRequired = 55,
+	Objectives = { { Kind = "Dungeon", Target = "CloudCitadel", Count = 1 } },
+	Rewards = { Exp = 90000, Gold = 12000, Gems = 25 },
+	Dialog = { Offer = "Clear the Cloud Citadel.", Complete = "The citadel is ours." },
+})
 
 -- FROZEN -----------------------------------------------------------------------------------
-add(
-	"FZ_Wolves",
-	{
-		Name = "Howling Winds",
-		Type = "Kill",
-		Giver = "FrostCommander",
-		LevelRequired = 75,
-		Objectives = { { Kind = "Kill", Target = "FrostWolf", Count = 12 } },
-		Rewards = { Exp = 220000, Gold = 20000 },
-		Dialog = { Offer = "Frost wolves stalk the pass. Cull 12.", Complete = "The pass is open." },
-	}
-)
-add(
-	"FZ_Yetis",
-	{
-		Name = "Yeti Hunt",
-		Type = "Collect",
-		Giver = "FrostCommander",
-		LevelRequired = 82,
-		Objectives = { { Kind = "Collect", Item = "YetiHide", Count = 6 } },
-		Rewards = { Exp = 300000, Gold = 26000, Spins = 1 },
-		Dialog = { Offer = "Our soldiers freeze. Bring 6 yeti hides.", Complete = "Warm coats for all!" },
-	}
-)
-add(
-	"FZ_Soldiers",
-	{
-		Name = "Siege of the Fortress",
-		Type = "Kill",
-		Giver = "FrostCommander",
-		Prerequisite = "FZ_Wolves",
-		LevelRequired = 92,
-		Objectives = { { Kind = "Kill", Target = "IceSoldier", Count = 10 }, { Kind = "Kill", Target = "FrostKnight", Count = 3 } },
-		Rewards = { Exp = 480000, Gold = 36000 },
-		Dialog = { Offer = "Storm the fortress gate.", Complete = "The gate has fallen!" },
-	}
-)
-add(
-	"FZ_Empress",
-	{
-		Name = "The Frozen Heart",
-		Type = "Boss",
-		Giver = "FrostCommander",
-		Prerequisite = "FZ_Soldiers",
-		LevelRequired = 100,
-		Objectives = { { Kind = "Boss", Target = "FrostEmpress", Count = 1 } },
-		Rewards = { Exp = 900000, Gold = 60000, Gems = 50, Spins = 3 },
-		Dialog = { Offer = "Face the Empress in her throne room.", Complete = "Spring may come again." },
-	}
-)
-add(
-	"FZ_Dungeon",
-	{
-		Name = "Glacier Depths",
-		Type = "Dungeon",
-		Giver = "FrostCommander",
-		LevelRequired = 85,
-		Objectives = { { Kind = "Dungeon", Target = "GlacierDepths", Count = 1 } },
-		Rewards = { Exp = 400000, Gold = 30000, Gems = 30 },
-		Dialog = { Offer = "Something massive sleeps in the glacier.", Complete = "A wyrm?! You're mad - and alive." },
-	}
-)
-add(
-	"FZ_Missive",
-	{
-		Name = "Orders for the Exile",
-		Type = "Delivery",
-		Giver = "FrostCommander",
-		TurnIn = "DemonExile",
-		Prerequisite = "FZ_Empress",
-		LevelRequired = 108,
-		Objectives = { { Kind = "Deliver", Item = "FrostMissive", Count = 1, To = "DemonExile" } },
-		Rewards = { Exp = 500000, Gold = 40000 },
-		Dialog = {
-			Offer = "Take this missive through the Hellgate to Kael, the exiled demon.",
-			Complete = "So the humans will fight with me. Good.",
-		},
-	}
-)
+add("FZ_Wolves", {
+	Name = "Howling Winds",
+	Type = "Kill",
+	Giver = "FrostCommander",
+	LevelRequired = 75,
+	Objectives = { { Kind = "Kill", Target = "FrostWolf", Count = 12 } },
+	Rewards = { Exp = 220000, Gold = 20000 },
+	Dialog = { Offer = "Frost wolves stalk the pass. Cull 12.", Complete = "The pass is open." },
+})
+add("FZ_Yetis", {
+	Name = "Yeti Hunt",
+	Type = "Collect",
+	Giver = "FrostCommander",
+	LevelRequired = 82,
+	Objectives = { { Kind = "Collect", Item = "YetiHide", Count = 6 } },
+	Rewards = { Exp = 300000, Gold = 26000, Spins = 1 },
+	Dialog = { Offer = "Our soldiers freeze. Bring 6 yeti hides.", Complete = "Warm coats for all!" },
+})
+add("FZ_Soldiers", {
+	Name = "Siege of the Fortress",
+	Type = "Kill",
+	Giver = "FrostCommander",
+	Prerequisite = "FZ_Wolves",
+	LevelRequired = 92,
+	Objectives = { { Kind = "Kill", Target = "IceSoldier", Count = 10 }, { Kind = "Kill", Target = "FrostKnight", Count = 3 } },
+	Rewards = { Exp = 480000, Gold = 36000 },
+	Dialog = { Offer = "Storm the fortress gate.", Complete = "The gate has fallen!" },
+})
+add("FZ_Empress", {
+	Name = "The Frozen Heart",
+	Type = "Boss",
+	Giver = "FrostCommander",
+	Prerequisite = "FZ_Soldiers",
+	LevelRequired = 100,
+	Objectives = { { Kind = "Boss", Target = "FrostEmpress", Count = 1 } },
+	Rewards = { Exp = 900000, Gold = 60000, Gems = 50, Spins = 3 },
+	Dialog = { Offer = "Face the Empress in her throne room.", Complete = "Spring may come again." },
+})
+add("FZ_Dungeon", {
+	Name = "Glacier Depths",
+	Type = "Dungeon",
+	Giver = "FrostCommander",
+	LevelRequired = 85,
+	Objectives = { { Kind = "Dungeon", Target = "GlacierDepths", Count = 1 } },
+	Rewards = { Exp = 400000, Gold = 30000, Gems = 30 },
+	Dialog = { Offer = "Something massive sleeps in the glacier.", Complete = "A wyrm?! You're mad - and alive." },
+})
+add("FZ_Missive", {
+	Name = "Orders for the Exile",
+	Type = "Delivery",
+	Giver = "FrostCommander",
+	TurnIn = "DemonExile",
+	Prerequisite = "FZ_Empress",
+	LevelRequired = 108,
+	Objectives = { { Kind = "Deliver", Item = "FrostMissive", Count = 1, To = "DemonExile" } },
+	Rewards = { Exp = 500000, Gold = 40000 },
+	Dialog = {
+		Offer = "Take this missive through the Hellgate to Kael, the exiled demon.",
+		Complete = "So the humans will fight with me. Good.",
+	},
+})
 
 -- DEMON ------------------------------------------------------------------------------------
-add(
-	"DM_Imps",
-	{
-		Name = "Imp Infestation",
-		Type = "Kill",
-		Giver = "DemonExile",
-		LevelRequired = 110,
-		Objectives = { { Kind = "Kill", Target = "Imp", Count = 15 } },
-		Rewards = { Exp = 1000000, Gold = 60000 },
-		Dialog = { Offer = "Imps everywhere. Burn them out.", Complete = "Fewer eyes watching us." },
-	}
-)
-add(
-	"DM_Warriors",
-	{
-		Name = "Demon Legion",
-		Type = "Kill",
-		Giver = "DemonExile",
-		Prerequisite = "DM_Imps",
-		LevelRequired = 125,
-		Objectives = { { Kind = "Kill", Target = "DemonWarrior", Count = 10 }, { Kind = "Kill", Target = "VoidCultist", Count = 6 } },
-		Rewards = { Exp = 1800000, Gold = 90000, Spins = 2 },
-		Dialog = { Offer = "Break his legion.", Complete = "The legion trembles." },
-	}
-)
-add(
-	"DM_Horns",
-	{
-		Name = "Horns of Power",
-		Type = "Collect",
-		Giver = "DemonExile",
-		LevelRequired = 120,
-		Objectives = { { Kind = "Collect", Item = "DemonHorn", Count = 8 } },
-		Rewards = { Exp = 1400000, Gold = 70000, Items = { SpinToken = 1 } },
-		Dialog = { Offer = "Demon horns hold power. Bring 8.", Complete = "Strong horns. Good." },
-	}
-)
-add(
-	"DM_Lord",
-	{
-		Name = "Fall of Vorgath",
-		Type = "Boss",
-		Giver = "DemonExile",
-		Prerequisite = "DM_Warriors",
-		LevelRequired = 150,
-		Objectives = { { Kind = "Kill", Target = "DemonGeneral", Count = 2 }, { Kind = "Boss", Target = "DemonLord", Count = 1 } },
-		Rewards = { Exp = 4000000, Gold = 200000, Gems = 80, Spins = 5 },
-		Dialog = { Offer = "Kill his generals, then Vorgath himself.", Complete = "The realm is free... thank you." },
-	}
-)
-add(
-	"DM_Dungeon",
-	{
-		Name = "The Infernal Pit",
-		Type = "Dungeon",
-		Giver = "DemonExile",
-		LevelRequired = 120,
-		Objectives = { { Kind = "Dungeon", Target = "InfernalPit", Count = 1 } },
-		Rewards = { Exp = 1600000, Gold = 80000, Gems = 40 },
-		Dialog = { Offer = "Descend into the Infernal Pit.", Complete = "You returned from the pit. Few do." },
-	}
-)
+add("DM_Imps", {
+	Name = "Imp Infestation",
+	Type = "Kill",
+	Giver = "DemonExile",
+	LevelRequired = 110,
+	Objectives = { { Kind = "Kill", Target = "Imp", Count = 15 } },
+	Rewards = { Exp = 1000000, Gold = 60000 },
+	Dialog = { Offer = "Imps everywhere. Burn them out.", Complete = "Fewer eyes watching us." },
+})
+add("DM_Warriors", {
+	Name = "Demon Legion",
+	Type = "Kill",
+	Giver = "DemonExile",
+	Prerequisite = "DM_Imps",
+	LevelRequired = 125,
+	Objectives = { { Kind = "Kill", Target = "DemonWarrior", Count = 10 }, { Kind = "Kill", Target = "VoidCultist", Count = 6 } },
+	Rewards = { Exp = 1800000, Gold = 90000, Spins = 2 },
+	Dialog = { Offer = "Break his legion.", Complete = "The legion trembles." },
+})
+add("DM_Horns", {
+	Name = "Horns of Power",
+	Type = "Collect",
+	Giver = "DemonExile",
+	LevelRequired = 120,
+	Objectives = { { Kind = "Collect", Item = "DemonHorn", Count = 8 } },
+	Rewards = { Exp = 1400000, Gold = 70000, Items = { SpinToken = 1 } },
+	Dialog = { Offer = "Demon horns hold power. Bring 8.", Complete = "Strong horns. Good." },
+})
+add("DM_Lord", {
+	Name = "Fall of Vorgath",
+	Type = "Boss",
+	Giver = "DemonExile",
+	Prerequisite = "DM_Warriors",
+	LevelRequired = 150,
+	Objectives = { { Kind = "Kill", Target = "DemonGeneral", Count = 2 }, { Kind = "Boss", Target = "DemonLord", Count = 1 } },
+	Rewards = { Exp = 4000000, Gold = 200000, Gems = 80, Spins = 5 },
+	Dialog = { Offer = "Kill his generals, then Vorgath himself.", Complete = "The realm is free... thank you." },
+})
+add("DM_Dungeon", {
+	Name = "The Infernal Pit",
+	Type = "Dungeon",
+	Giver = "DemonExile",
+	LevelRequired = 120,
+	Objectives = { { Kind = "Dungeon", Target = "InfernalPit", Count = 1 } },
+	Rewards = { Exp = 1600000, Gold = 80000, Gems = 40 },
+	Dialog = { Offer = "Descend into the Infernal Pit.", Complete = "You returned from the pit. Few do." },
+})
 
 -- CELESTIAL --------------------------------------------------------------------------------
-add(
-	"CL_Seraphs",
-	{
-		Name = "Fallen Seraphs",
-		Type = "Kill",
-		Giver = "CelestialOracle",
-		LevelRequired = 160,
-		Objectives = { { Kind = "Kill", Target = "Seraph", Count = 15 } },
-		Rewards = { Exp = 5000000, Gold = 250000 },
-		Dialog = { Offer = "The seraphs have been corrupted.", Complete = "Their light returns." },
-	}
-)
-add(
-	"CL_Guardians",
-	{
-		Name = "Guardians' Test",
-		Type = "Kill",
-		Giver = "CelestialOracle",
-		Prerequisite = "CL_Seraphs",
-		LevelRequired = 170,
-		Objectives = { { Kind = "Kill", Target = "CelestialGuardian", Count = 10 } },
-		Rewards = { Exp = 7000000, Gold = 300000, Spins = 2 },
-		Dialog = { Offer = "Prove yourself against the guardians.", Complete = "They accept you." },
-	}
-)
-add(
-	"CL_Titans",
-	{
-		Name = "Titan Fall",
-		Type = "Kill",
-		Giver = "CelestialOracle",
-		Prerequisite = "CL_Guardians",
-		LevelRequired = 185,
-		Objectives = { { Kind = "Kill", Target = "StarTitan", Count = 5 } },
-		Rewards = { Exp = 10000000, Gold = 400000, Items = { SpinToken = 2 } },
-		Dialog = { Offer = "Topple the Star Titans.", Complete = "The heavens shook." },
-	}
-)
-add(
-	"CL_Sovereign",
-	{
-		Name = "Throne of Heaven",
-		Type = "Boss",
-		Giver = "CelestialOracle",
-		Prerequisite = "CL_Titans",
-		LevelRequired = 195,
-		Objectives = { { Kind = "Boss", Target = "CelestialSovereign", Count = 1 } },
-		Rewards = { Exp = 20000000, Gold = 1000000, Gems = 200, Spins = 10 },
-		Dialog = { Offer = "Face Aurelion on the Throne of Heaven.", Complete = "You stand above the gods themselves." },
-	}
-)
-add(
-	"CL_Raid",
-	{
-		Name = "Eclipse",
-		Type = "Dungeon",
-		Giver = "RaidHerald",
-		LevelRequired = 170,
-		Objectives = { { Kind = "Raid", Target = "EclipseRaid", Count = 1 } },
-		Rewards = { Exp = 15000000, Gold = 800000, Gems = 150 },
-		Dialog = { Offer = "Defeat the Eclipse Tyrant with your allies.", Complete = "Legends will speak of this day." },
-	}
-)
+add("CL_Seraphs", {
+	Name = "Fallen Seraphs",
+	Type = "Kill",
+	Giver = "CelestialOracle",
+	LevelRequired = 160,
+	Objectives = { { Kind = "Kill", Target = "Seraph", Count = 15 } },
+	Rewards = { Exp = 5000000, Gold = 250000 },
+	Dialog = { Offer = "The seraphs have been corrupted.", Complete = "Their light returns." },
+})
+add("CL_Guardians", {
+	Name = "Guardians' Test",
+	Type = "Kill",
+	Giver = "CelestialOracle",
+	Prerequisite = "CL_Seraphs",
+	LevelRequired = 170,
+	Objectives = { { Kind = "Kill", Target = "CelestialGuardian", Count = 10 } },
+	Rewards = { Exp = 7000000, Gold = 300000, Spins = 2 },
+	Dialog = { Offer = "Prove yourself against the guardians.", Complete = "They accept you." },
+})
+add("CL_Titans", {
+	Name = "Titan Fall",
+	Type = "Kill",
+	Giver = "CelestialOracle",
+	Prerequisite = "CL_Guardians",
+	LevelRequired = 185,
+	Objectives = { { Kind = "Kill", Target = "StarTitan", Count = 5 } },
+	Rewards = { Exp = 10000000, Gold = 400000, Items = { SpinToken = 2 } },
+	Dialog = { Offer = "Topple the Star Titans.", Complete = "The heavens shook." },
+})
+add("CL_Sovereign", {
+	Name = "Throne of Heaven",
+	Type = "Boss",
+	Giver = "CelestialOracle",
+	Prerequisite = "CL_Titans",
+	LevelRequired = 195,
+	Objectives = { { Kind = "Boss", Target = "CelestialSovereign", Count = 1 } },
+	Rewards = { Exp = 20000000, Gold = 1000000, Gems = 200, Spins = 10 },
+	Dialog = { Offer = "Face Aurelion on the Throne of Heaven.", Complete = "You stand above the gods themselves." },
+})
+add("CL_Raid", {
+	Name = "Eclipse",
+	Type = "Dungeon",
+	Giver = "RaidHerald",
+	LevelRequired = 170,
+	Objectives = { { Kind = "Raid", Target = "EclipseRaid", Count = 1 } },
+	Rewards = { Exp = 15000000, Gold = 800000, Gems = 150 },
+	Dialog = { Offer = "Defeat the Eclipse Tyrant with your allies.", Complete = "Legends will speak of this day." },
+})
 
 -- SECRET / NIGHT ---------------------------------------------------------------------------
 add("SC_Wraith", {
@@ -532,69 +469,48 @@ add("NT_Moonpetal", {
 })
 
 -- DAILY / WEEKLY POOLS ---------------------------------------------------------------------
-add(
-	"DY_Slayer",
-	{
-		Name = "Daily: Slayer",
-		Type = "Daily",
-		Objectives = { { Kind = "Kill", Target = "Any", Count = 40 } },
-		Rewards = { ExpLevelMultiplier = 1.5, Gold = 2000, Gems = 10 },
-	}
-)
-add(
-	"DY_Boss",
-	{
-		Name = "Daily: Boss Hunter",
-		Type = "Daily",
-		Objectives = { { Kind = "Boss", Target = "Any", Count = 1 } },
-		Rewards = { ExpLevelMultiplier = 2, Gems = 15, Spins = 1 },
-	}
-)
-add(
-	"DY_Dungeon",
-	{
-		Name = "Daily: Delver",
-		Type = "Daily",
-		Objectives = { { Kind = "Dungeon", Target = "Any", Count = 1 } },
-		Rewards = { ExpLevelMultiplier = 2, Gems = 15 },
-	}
-)
-add(
-	"DY_Explorer",
-	{
-		Name = "Daily: Wanderer",
-		Type = "Daily",
-		Objectives = { { Kind = "Kill", Target = "Any", Count = 20 }, { Kind = "Boss", Target = "Any", Count = 1 } },
-		Rewards = { ExpLevelMultiplier = 2, Gold = 3000, Items = { LuckPotion = 1 } },
-	}
-)
-add(
-	"WK_Legend",
-	{
-		Name = "Weekly: Legend",
-		Type = "Weekly",
-		Objectives = { { Kind = "Kill", Target = "Any", Count = 400 } },
-		Rewards = { ExpLevelMultiplier = 8, Gems = 80, Spins = 3 },
-	}
-)
-add(
-	"WK_Bosses",
-	{
-		Name = "Weekly: Tyrant Slayer",
-		Type = "Weekly",
-		Objectives = { { Kind = "Boss", Target = "Any", Count = 10 } },
-		Rewards = { ExpLevelMultiplier = 8, Gems = 100, TraitRolls = 1 },
-	}
-)
-add(
-	"WK_Dungeons",
-	{
-		Name = "Weekly: Dungeon Crawler",
-		Type = "Weekly",
-		Objectives = { { Kind = "Dungeon", Target = "Any", Count = 5 } },
-		Rewards = { ExpLevelMultiplier = 8, Gems = 100, Spins = 2 },
-	}
-)
+add("DY_Slayer", {
+	Name = "Daily: Slayer",
+	Type = "Daily",
+	Objectives = { { Kind = "Kill", Target = "Any", Count = 40 } },
+	Rewards = { ExpLevelMultiplier = 1.5, Gold = 2000, Gems = 10 },
+})
+add("DY_Boss", {
+	Name = "Daily: Boss Hunter",
+	Type = "Daily",
+	Objectives = { { Kind = "Boss", Target = "Any", Count = 1 } },
+	Rewards = { ExpLevelMultiplier = 2, Gems = 15, Spins = 1 },
+})
+add("DY_Dungeon", {
+	Name = "Daily: Delver",
+	Type = "Daily",
+	Objectives = { { Kind = "Dungeon", Target = "Any", Count = 1 } },
+	Rewards = { ExpLevelMultiplier = 2, Gems = 15 },
+})
+add("DY_Explorer", {
+	Name = "Daily: Wanderer",
+	Type = "Daily",
+	Objectives = { { Kind = "Kill", Target = "Any", Count = 20 }, { Kind = "Boss", Target = "Any", Count = 1 } },
+	Rewards = { ExpLevelMultiplier = 2, Gold = 3000, Items = { LuckPotion = 1 } },
+})
+add("WK_Legend", {
+	Name = "Weekly: Legend",
+	Type = "Weekly",
+	Objectives = { { Kind = "Kill", Target = "Any", Count = 400 } },
+	Rewards = { ExpLevelMultiplier = 8, Gems = 80, Spins = 3 },
+})
+add("WK_Bosses", {
+	Name = "Weekly: Tyrant Slayer",
+	Type = "Weekly",
+	Objectives = { { Kind = "Boss", Target = "Any", Count = 10 } },
+	Rewards = { ExpLevelMultiplier = 8, Gems = 100, TraitRolls = 1 },
+})
+add("WK_Dungeons", {
+	Name = "Weekly: Dungeon Crawler",
+	Type = "Weekly",
+	Objectives = { { Kind = "Dungeon", Target = "Any", Count = 5 } },
+	Rewards = { ExpLevelMultiplier = 8, Gems = 100, Spins = 2 },
+})
 
 return {
 	List = quests,

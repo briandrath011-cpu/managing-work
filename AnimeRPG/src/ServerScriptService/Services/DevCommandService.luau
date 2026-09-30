@@ -7,6 +7,7 @@
 		/stats            (+100 stat points)             /awaken (fill awakening bar)
 		/boss BanditChief /event Portal  /time 21         /weather Storm
 		/tp Desert        /heal          /unlockall (all waypoints + flight)
+		/power Rinnegan   (adds a power to storage and equips it)
 ]]
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
@@ -18,6 +19,7 @@ local GameConfig = require(Modules.Config.GameConfig)
 local WorldConfig = require(Modules.World.WorldConfig)
 local ItemUtil = require(Modules.Items.ItemUtil)
 local Progression = require(Modules.Config.Progression)
+local PowerRegistry = require(Modules.Powers.PowerRegistry)
 local Registry = require(ServerScriptService.ServerModules.Registry)
 local EntityRegistry = require(ServerScriptService.ServerModules.EntityRegistry)
 local Motion = require(ServerScriptService.ServerModules.Motion)
@@ -117,6 +119,19 @@ commands.heal = function(player)
 	end
 	Registry.Get("CharacterService"):RestoreEnergy(player, 1e6)
 end
+commands.power = function(player, id)
+	local def = PowerRegistry.Get(id)
+	if not def then
+		error("Unknown power " .. tostring(id))
+	end
+	local dataService = Registry.Get("PlayerDataService")
+	local data = dataService:Get(player)
+	local uid = "dev" .. tostring(os.clock()):gsub("%.", "")
+	data.Powers.Owned[uid] = { Id = def.Id, Locked = false, Obtained = os.time() }
+	data.Powers.EquippedUid = uid
+	dataService:Replicate(player, "Powers")
+end
+
 commands.unlockall = function(player)
 	local dataService = Registry.Get("PlayerDataService")
 	local data = dataService:Get(player)

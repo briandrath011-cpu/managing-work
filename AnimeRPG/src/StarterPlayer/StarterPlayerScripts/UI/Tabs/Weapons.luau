@@ -64,17 +64,13 @@ function WeaponsTab:Refresh()
 			stroke.Color = UIKit.RarityColor(def.Rarity)
 		end
 		local equipped = data.Equipment.Weapon == weapon.Uid
-		UIKit.Label(
-			card,
-			def.DisplayName,
-			{
-				Position = UDim2.fromOffset(12, 6),
-				Size = UDim2.new(1, -140, 0, 24),
-				TextSize = 18,
-				Font = T.FontBlack,
-				TextColor3 = UIKit.RarityColor(def.Rarity),
-			}
-		)
+		UIKit.Label(card, def.DisplayName, {
+			Position = UDim2.fromOffset(12, 6),
+			Size = UDim2.new(1, -140, 0, 24),
+			TextSize = 18,
+			Font = T.FontBlack,
+			TextColor3 = UIKit.RarityColor(def.Rarity),
+		})
 		UIKit.Label(
 			card,
 			string.format(
